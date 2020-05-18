@@ -5,13 +5,16 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.gaming.ingrs.hdwallet.backend.AutomateBoringStuff
 import com.gaming.ingrs.hdwallet.backend.BitcoinAPI
+import com.gaming.ingrs.hdwallet.backend.DoAsync
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        test()
+        DoAsync {
+            test()
+        }.execute()
     }
 
     private fun test() {
