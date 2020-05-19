@@ -11,3 +11,5 @@ k
 ;app/src/main/java/com/gaming/ingrs/hdwallet/MainActivity.kt,2\3\238936e51307411c20256642d7512bcf3fa9868c
 t
 Dapp/src/main/java/com/gaming/ingrs/hdwallet/splash/SplashActivity.kt,d\9\d94e6e0fa035deeb7a199de662fb3c37d1f0e1c8
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e

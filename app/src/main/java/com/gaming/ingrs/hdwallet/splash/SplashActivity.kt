@@ -1,18 +1,16 @@
 package com.gaming.ingrs.hdwallet.splash
 
 import android.content.Intent
-import java.security.KeyStoreException
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.gaming.ingrs.hdwallet.MainActivity
 
-class SplashActivity {
-    override val logicHandler = Runnable {
-        val newIntent: Intent
 
-        try{
-
-        }catch(e: KeyStoreException){
-
-        } finally {
-
-        }
+class SplashActivity: AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }
