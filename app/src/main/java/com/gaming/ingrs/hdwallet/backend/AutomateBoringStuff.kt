@@ -1,6 +1,7 @@
 package com.gaming.ingrs.hdwallet.backend
 
 class AutomateBoringStuff {
+
     fun convertListToString(
         words: List<String>,
         delimiter: String
@@ -8,8 +9,10 @@ class AutomateBoringStuff {
         val builder = StringBuilder()
         for (details in words) {
             //Log.e("Details: ",details);
-            builder.append(details + delimiter)
+            builder.append(details)
+            builder.append(delimiter)
         }
         return builder.toString()
     }
+
 }

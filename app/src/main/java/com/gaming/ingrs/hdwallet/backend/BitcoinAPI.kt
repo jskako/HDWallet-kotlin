@@ -17,7 +17,7 @@ class BitcoinAPI {
     }
 
     //Mnemonoic generator
-    fun mnemonicGenerator(entropy: ByteArray): List<String> {
+    fun mnemonicGenerator(entropy: ByteArray = entropyGenerator()): List<String> {
         lateinit var words: List<String>
         try {
             words = MnemonicCode.INSTANCE.toMnemonic(entropy)
@@ -28,8 +28,7 @@ class BitcoinAPI {
     }
 
     //Seed generator
-    fun seedGenerator(words: List<String>): ByteArray {
-        val passphrase = ""
+    fun seedGenerator(words: List<String>, passphrase: String): ByteArray {
         return MnemonicCode.toSeed(words, passphrase)
     }
 
