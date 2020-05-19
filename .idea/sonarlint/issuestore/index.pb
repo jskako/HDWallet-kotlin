@@ -13,3 +13,7 @@ t
 Dapp/src/main/java/com/gaming/ingrs/hdwallet/splash/SplashActivity.kt,d\9\d94e6e0fa035deeb7a199de662fb3c37d1f0e1c8
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+o
+?app/src/main/java/com/gaming/ingrs/hdwallet/setup/NFCChecker.kt,0\6\06b60f58715d08d6ee9e2aa7eeec925685a4e300
+o
+?app/src/main/java/com/gaming/ingrs/hdwallet/setup/SysReqFrag.kt,c\2\c2e873b4b107e54a9b5dc38edec8dec538ac84b1
