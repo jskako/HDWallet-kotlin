@@ -1,30 +1,67 @@
 package com.gaming.ingrs.hdwallet
 
+import android.app.Activity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.gaming.ingrs.hdwallet.backend.Operations
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import com.gaming.ingrs.hdwallet.backend.BitcoinAPI
+import com.gaming.ingrs.hdwallet.backend.Operations
+import com.gaming.ingrs.hdwallet.backend.SafetynetAttestation
+import com.gaming.ingrs.hdwallet.setup.NFCChecker
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        test()
+        //test()
+
+        setSupportActionBar(toolbar)
+
+        navController = Navigation.findNavController(this, R.id.startingFragment)
+
+        NavigationUI.setupWithNavController(navigation_view, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
     }
 
-    private fun test() {
+    override fun onSupportNavigateUp(): Boolean {
+        return NavigationUI.navigateUp(navController, drawer_layout)
+    }
+
+    /*private fun test() {
+        val activity: Activity = this
         val textView = findViewById<TextView>(R.id.test)
+        val textViewOne = findViewById<TextView>(R.id.textView)
+        val textViewTwo = findViewById<TextView>(R.id.textView2)
         val bc = BitcoinAPI()
         val words: List<String> = bc.mnemonicGenerator()
         val abs = Operations()
         val myWords: String = abs.convertListToString(words, " ")
         textView.text = myWords
 
+        val seed = bc.seedGenerator(words, "")
+        val mkey = bc.generateMasterKey(seed)
+        Log.e("Privatekey",mkey.privateKeyAsHex)
+        Log.e("Publickey",mkey.publicKeyAsHex)
+        val derbcr = bc.deriveBitcoinRootKey(mkey)
+        Log.e("Derbcr",derbcr.toString())
+
         abs.writeToSharedPreferences(this,"Test","This is my TEST data")
         val rfsp = abs.readFromSharedPreferences(this, "Test")
         textView.text = rfsp
+        val fragment = SafetynetAttestation()
+        fragment.sendSafetyNetRequest(activity)
 
-    }
+        val nfc: NFCChecker? = null
+        val nfcAvailable = nfc!!.readNFCstatus(this)
+        Log.d(TAG, "NFC: $nfcAvailable")
+
+    }*/
 }

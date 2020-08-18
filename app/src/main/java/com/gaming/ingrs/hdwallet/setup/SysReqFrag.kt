@@ -17,16 +17,4 @@ class SysReqFrag : Fragment() {
         return inflater.inflate(R.layout.fragment_system_requirements, container, false)
     }
 
-    private val checkNFC = Runnable {
-        val state = when (NFCChecker.readNFCstatus(this@SysReqFrag.requireContext())) {
-            NFCChecker.NFCstatus.ENABLED -> State.NFCAvailable
-            NFCChecker.NFCstatus.DISABLED -> State.NFCAvailable
-            NFCChecker.NFCstatus.NOT_EXISTING -> State.NFCUnavailable
-        }
-    }
-
-    private enum class State {
-        NFCAvailable,
-        NFCUnavailable
-    }
 }

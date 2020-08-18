@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.gaming.ingrs.hdwallet.fragments.homeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/payFragment"
+        android:name="com.gaming.ingrs.hdwallet.fragments.payFragment"
+        android:label="fragment_pay"
+        tools:layout="@layout/fragment_pay" />
+    <fragment
+        android:id="@+id/receiveFragment"
+        android:name="com.gaming.ingrs.hdwallet.fragments.receiveFragment"
+        android:label="fragment_receive"
+        tools:layout="@layout/fragment_receive" />
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="com.gaming.ingrs.hdwallet.fragments.historyFragment"
+        android:label="fragment_history"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/addressBookFragment"
+        android:name="com.gaming.ingrs.hdwallet.fragments.addressBookFragment"
+        android:label="fragment_address_book"
+        tools:layout="@layout/fragment_address_book" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.gaming.ingrs.hdwallet.fragments.aboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
+</navigation>

@@ -3,8 +3,6 @@
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 q
 Aapp/src/main/java/com/gaming/ingrs/hdwallet/backend/BitcoinAPI.kt,6\e\6ee773fab4bdc7057c8dc3409f37fb6904a75050
-z
-Japp/src/main/java/com/gaming/ingrs/hdwallet/backend/AutomateBoringStuff.kt,f\b\fbe41ae400bb0ac45bb2e11a6babef671831173a
 n
 >app/src/main/java/com/gaming/ingrs/hdwallet/backend/DoAsync.kt,8\f\8f398b896bab5f723a7d713b12eb8b8a777a94d8
 k
@@ -17,3 +15,17 @@ o
 ?app/src/main/java/com/gaming/ingrs/hdwallet/setup/NFCChecker.kt,0\6\06b60f58715d08d6ee9e2aa7eeec925685a4e300
 o
 ?app/src/main/java/com/gaming/ingrs/hdwallet/setup/SysReqFrag.kt,c\2\c2e873b4b107e54a9b5dc38edec8dec538ac84b1
+q
+Aapp/src/main/java/com/gaming/ingrs/hdwallet/backend/Operations.kt,c\4\c4a0bb46169dad65595600cac0314ebd460e04eb
+<
+build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+{
+Kapp/src/main/java/com/gaming/ingrs/hdwallet/backend/SafetynetAttestation.kt,a\a\aa69d5ae4c7afcec8f696eb42b630621581a28ec
+|
+Lapp/src/main/java/com/gaming/ingrs/hdwallet/fragment/TransactionsFragment.kt,6\f\6fa0f9b26121958484d4dcdd9a0528e188adcbd8
+w
+Gapp/src/main/java/com/gaming/ingrs/hdwallet/fragment/RecieveFragment.kt,d\9\d9c32eced6c7006cc1675d0c6efbad7db1357e0c
+s
+Capp/src/main/java/com/gaming/ingrs/hdwallet/fragment/PayFragment.kt,5\8\58d72fad6ff864b78e09985c8b11346547e60da4
+{
+Kapp/src/main/java/com/gaming/ingrs/hdwallet/fragment/AddressBookFragment.kt,3\3\331ed8d15378ccd0aaf7f2d21c5bd9d213059bc4
