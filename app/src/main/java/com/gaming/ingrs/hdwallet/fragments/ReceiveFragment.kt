@@ -11,7 +11,7 @@ import com.gaming.ingrs.hdwallet.R
 /**
  * A simple [Fragment] subclass.
  */
-class receiveFragment : Fragment() {
+class ReceiveFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

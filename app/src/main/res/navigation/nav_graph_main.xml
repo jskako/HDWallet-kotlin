@@ -7,32 +7,32 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.gaming.ingrs.hdwallet.fragments.homeFragment"
-        android:label="fragment_home"
+        android:name="com.gaming.ingrs.hdwallet.fragments.HomeFragment"
+        android:label="Home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/payFragment"
-        android:name="com.gaming.ingrs.hdwallet.fragments.payFragment"
-        android:label="fragment_pay"
+        android:name="com.gaming.ingrs.hdwallet.fragments.PayFragment"
+        android:label="Pay"
         tools:layout="@layout/fragment_pay" />
     <fragment
         android:id="@+id/receiveFragment"
-        android:name="com.gaming.ingrs.hdwallet.fragments.receiveFragment"
-        android:label="fragment_receive"
+        android:name="com.gaming.ingrs.hdwallet.fragments.ReceiveFragment"
+        android:label="Recieve"
         tools:layout="@layout/fragment_receive" />
     <fragment
         android:id="@+id/historyFragment"
-        android:name="com.gaming.ingrs.hdwallet.fragments.historyFragment"
-        android:label="fragment_history"
+        android:name="com.gaming.ingrs.hdwallet.fragments.HistoryFragment"
+        android:label="History"
         tools:layout="@layout/fragment_history" />
     <fragment
         android:id="@+id/addressBookFragment"
-        android:name="com.gaming.ingrs.hdwallet.fragments.addressBookFragment"
-        android:label="fragment_address_book"
+        android:name="com.gaming.ingrs.hdwallet.fragments.AddressBookFragment"
+        android:label="Address Book"
         tools:layout="@layout/fragment_address_book" />
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.gaming.ingrs.hdwallet.fragments.aboutFragment"
-        android:label="fragment_about"
+        android:name="com.gaming.ingrs.hdwallet.fragments.AboutFragment"
+        android:label="About"
         tools:layout="@layout/fragment_about" />
 </navigation>

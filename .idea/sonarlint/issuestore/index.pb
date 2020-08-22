@@ -21,11 +21,15 @@ Aapp/src/main/java/com/gaming/ingrs/hdwallet/backend/Operations.kt,c\4\c4a0bb46
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
 {
 Kapp/src/main/java/com/gaming/ingrs/hdwallet/backend/SafetynetAttestation.kt,a\a\aa69d5ae4c7afcec8f696eb42b630621581a28ec
+u
+Eapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/homeFragment.kt,0\b\0b641ec24e6247f8a1c6b32c8893ba170eb64d1f
+t
+Dapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/payFragment.kt,7\c\7cd4d72b67c4dfbc740e1ebaae8210a3c8228b87
+x
+Happ/src/main/java/com/gaming/ingrs/hdwallet/fragments/receiveFragment.kt,f\f\ff47119feb65721f732f091e6d2a7859e279f870
+x
+Happ/src/main/java/com/gaming/ingrs/hdwallet/fragments/historyFragment.kt,f\7\f773da2b733fa95a8f906c9ddd41bd5d11467ac8
 |
-Lapp/src/main/java/com/gaming/ingrs/hdwallet/fragment/TransactionsFragment.kt,6\f\6fa0f9b26121958484d4dcdd9a0528e188adcbd8
-w
-Gapp/src/main/java/com/gaming/ingrs/hdwallet/fragment/RecieveFragment.kt,d\9\d9c32eced6c7006cc1675d0c6efbad7db1357e0c
-s
-Capp/src/main/java/com/gaming/ingrs/hdwallet/fragment/PayFragment.kt,5\8\58d72fad6ff864b78e09985c8b11346547e60da4
-{
-Kapp/src/main/java/com/gaming/ingrs/hdwallet/fragment/AddressBookFragment.kt,3\3\331ed8d15378ccd0aaf7f2d21c5bd9d213059bc4
+Lapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/addressBookFragment.kt,e\1\e1c27c1fb6c7768112d775270bf1a8add6df96b5
+v
+Fapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/aboutFragment.kt,d\a\daf9fecac14a185736e5643161894528b4ee8f28

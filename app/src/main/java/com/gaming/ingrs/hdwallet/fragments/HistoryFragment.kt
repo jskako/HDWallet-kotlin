@@ -11,14 +11,14 @@ import com.gaming.ingrs.hdwallet.R
 /**
  * A simple [Fragment] subclass.
  */
-class aboutFragment : Fragment() {
+class HistoryFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false)
+        return inflater.inflate(R.layout.fragment_history, container, false)
     }
 
 }
