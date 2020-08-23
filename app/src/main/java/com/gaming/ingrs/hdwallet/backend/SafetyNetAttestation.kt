@@ -1,8 +1,12 @@
 package com.gaming.ingrs.hdwallet.backend
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.util.Log
-import androidx.fragment.app.Fragment
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.gaming.ingrs.hdwallet.MainActivity
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.safetynet.SafetyNet
@@ -15,17 +19,32 @@ import com.google.android.gms.tasks.Task
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.security.SecureRandom
-import java.text.ParseException
+import kotlin.system.exitProcess
 
 
-class SafetynetAttestation: Fragment() {
+class SafetyNetAttestation : AppCompatActivity() {
 
-    private val TAG = "SafetyNetSample"
-    private val mRandom = SecureRandom()
-    private var mResult: String? = null
-    private val API_KEY = "AIzaSyDSHoihxEGmqBxHsrb9WsmoRoh3w2xptbE"
+    companion object {
+        private const val TAG = "SafetyNetSample"
+        private val mRandom = SecureRandom()
+        private var mResult: String? = null
+        private const val API_KEY = "AIzaSyDSHoihxEGmqBxHsrb9WsmoRoh3w2xptbE"
+        private lateinit var myContext: Context
 
-    fun sendSafetyNetRequest(activity: Activity) {
+        var thread: Thread = object : Thread() {
+            override fun run() {
+                try {
+                    sleep(Toast.LENGTH_LONG.toLong())
+                    exitProcess(0)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
+    }
+
+    fun sendSafetyNetRequest(activity: Activity, context: Context) {
+        myContext = context
         val nonceData = "Safety Net Sample: " + System.currentTimeMillis()
         val nonce: ByteArray = getRequestNonce(nonceData)
         //activity needs to be fixed
@@ -52,7 +71,7 @@ class SafetynetAttestation: Fragment() {
         OnSuccessListener<AttestationResponse> { attestationResponse ->
             mResult = attestationResponse.jwsResult
             Log.d(TAG, "Success! SafetyNet result:\n$mResult\n")
-
+            successNext()
             /*
                              TODO(developer): Forward this result to your server together with
                              the nonce for verification.
@@ -78,6 +97,17 @@ class SafetynetAttestation: Fragment() {
             } else {
                 Log.d(TAG, "ERROR! " + e.message)
             }
+            Toast.makeText(
+                this,
+                "SafetyNetAttestation Failed! Your device might be rooted?",
+                Toast.LENGTH_LONG
+            ).show();
+            thread.start();
         }
+
+    private fun successNext() {
+        val intent = Intent(myContext, MainActivity::class.java)
+        myContext.startActivity(intent)
+    }
 
 }

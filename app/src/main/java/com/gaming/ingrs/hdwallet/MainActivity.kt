@@ -1,17 +1,10 @@
 package com.gaming.ingrs.hdwallet
 
-import android.app.Activity
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
-import com.gaming.ingrs.hdwallet.backend.BitcoinAPI
-import com.gaming.ingrs.hdwallet.backend.Operations
-import com.gaming.ingrs.hdwallet.backend.SafetynetAttestation
-import com.gaming.ingrs.hdwallet.setup.NFCChecker
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

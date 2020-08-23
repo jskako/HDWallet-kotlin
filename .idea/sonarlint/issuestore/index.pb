@@ -33,3 +33,17 @@ Happ/src/main/java/com/gaming/ingrs/hdwallet/fragments/historyFragment.kt,f\7\f
 Lapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/addressBookFragment.kt,e\1\e1c27c1fb6c7768112d775270bf1a8add6df96b5
 v
 Fapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/aboutFragment.kt,d\a\daf9fecac14a185736e5643161894528b4ee8f28
+x
+Happ/src/main/java/com/gaming/ingrs/hdwallet/fragments/HistoryFragment.kt,3\5\35753c22f7f90296592c07d1b8ace0ccb77656bc
+v
+Fapp/src/main/java/com/gaming/ingrs/hdwallet/backend/QRCodeGenerator.kt,1\8\186e19dead43e02dfe2f56e2936a22812e8656a3
+|
+Lapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/AddressBookFragment.kt,9\e\9ef06fcf592f1daf5f1af44996287edc8621e096
+v
+Fapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/AboutFragment.kt,f\8\f87ece728e80750cc14c24f2682e278fb9b0e0c8
+u
+Eapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/HomeFragment.kt,4\e\4ed25e2c17f90de2fd4790a1f39610fd1da5eb24
+t
+Dapp/src/main/java/com/gaming/ingrs/hdwallet/backend/QRCodeScanner.kt,2\e\2e02bdf40995f6821f6740af8af5d8ac397383a0
+t
+Dapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/PayFragment.kt,f\6\f66de0f4278992fff116e4d7dfbd350ae3473d84
