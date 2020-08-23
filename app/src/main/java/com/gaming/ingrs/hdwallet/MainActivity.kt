@@ -1,6 +1,7 @@
 package com.gaming.ingrs.hdwallet
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -22,6 +23,10 @@ class MainActivity : AppCompatActivity() {
         navController = Navigation.findNavController(this, R.id.startingFragment)
         NavigationUI.setupWithNavController(navigation_view, navController)
         NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
+
+        //Hide status bar
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        actionBar?.hide()
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -47,3 +47,5 @@ t
 Dapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/PayFragment.kt,f\6\f66de0f4278992fff116e4d7dfbd350ae3473d84
 {
 Kapp/src/main/java/com/gaming/ingrs/hdwallet/backend/SafetyNetAttestation.kt,2\0\205ae33d2ed8e4d40f8031116d74c6e3999e3656
+u
+Eapp/src/main/java/com/gaming/ingrs/hdwallet/backend/LoadingSpinner.kt,7\6\76a465a3b9268637b2aa1dacbf9aa174237e3a80
