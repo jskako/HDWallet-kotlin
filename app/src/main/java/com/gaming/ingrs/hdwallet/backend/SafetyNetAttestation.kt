@@ -1,6 +1,7 @@
 package com.gaming.ingrs.hdwallet.backend
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -25,6 +26,7 @@ import kotlin.system.exitProcess
 class SafetyNetAttestation : AppCompatActivity() {
 
     companion object {
+        val loadingSpinner = LoadingSpinner()
         private const val TAG = "SafetyNetSample"
         private val mRandom = SecureRandom()
         private var mResult: String? = null
@@ -45,6 +47,8 @@ class SafetyNetAttestation : AppCompatActivity() {
 
     fun sendSafetyNetRequest(activity: Activity, context: Context) {
         myContext = context
+        //Show Loading Spinner
+        loadingSpinner.startLoadingSpinner(myContext, "Verifying SafetyNet Attestation", "Checking requirements")
         val nonceData = "Safety Net Sample: " + System.currentTimeMillis()
         val nonce: ByteArray = getRequestNonce(nonceData)
         //activity needs to be fixed
@@ -106,6 +110,7 @@ class SafetyNetAttestation : AppCompatActivity() {
         }
 
     private fun successNext() {
+        loadingSpinner.stopTimer()
         val intent = Intent(myContext, MainActivity::class.java)
         myContext.startActivity(intent)
     }

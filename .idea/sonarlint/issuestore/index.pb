@@ -44,6 +44,6 @@ Fapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/AboutFragment.kt,f\8\f87
 u
 Eapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/HomeFragment.kt,4\e\4ed25e2c17f90de2fd4790a1f39610fd1da5eb24
 t
-Dapp/src/main/java/com/gaming/ingrs/hdwallet/backend/QRCodeScanner.kt,2\e\2e02bdf40995f6821f6740af8af5d8ac397383a0
-t
 Dapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/PayFragment.kt,f\6\f66de0f4278992fff116e4d7dfbd350ae3473d84
+{
+Kapp/src/main/java/com/gaming/ingrs/hdwallet/backend/SafetyNetAttestation.kt,2\0\205ae33d2ed8e4d40f8031116d74c6e3999e3656
