@@ -31,4 +31,9 @@
         android:title="@string/about"
         />
 
+    <item
+        android:id="@+id/settingsFragment"
+        android:title="@string/settings"
+        />
+
 </menu>

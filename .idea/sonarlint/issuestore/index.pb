@@ -49,3 +49,11 @@ Dapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/PayFragment.kt,f\6\f66de
 Kapp/src/main/java/com/gaming/ingrs/hdwallet/backend/SafetyNetAttestation.kt,2\0\205ae33d2ed8e4d40f8031116d74c6e3999e3656
 u
 Eapp/src/main/java/com/gaming/ingrs/hdwallet/backend/LoadingSpinner.kt,7\6\76a465a3b9268637b2aa1dacbf9aa174237e3a80
+s
+Capp/src/main/java/com/gaming/ingrs/hdwallet/backend/Cryptography.kt,0\3\039174c9fe9585e5065c3eccb4b273dcb5ef012e
+r
+Bapp/src/main/java/com/gaming/ingrs/hdwallet/backend/PINCreating.kt,d\a\daab25ca949598563af1426f216d75ccebac8a60
+x
+Happ/src/main/java/com/gaming/ingrs/hdwallet/backend/CustomPinActivity.kt,d\7\d7b944f4f79cd154af867fbd6865acc9287d715b
+y
+Iapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/SettingsFragment.kt,9\b\9b3fe8dd745fcda19f2b493e6edf613c0fa5f09b

@@ -1,7 +1,6 @@
 package com.gaming.ingrs.hdwallet.backend
 
 import android.app.Activity
-import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -48,7 +47,11 @@ class SafetyNetAttestation : AppCompatActivity() {
     fun sendSafetyNetRequest(activity: Activity, context: Context) {
         myContext = context
         //Show Loading Spinner
-        loadingSpinner.startLoadingSpinner(myContext, "Verifying SafetyNet Attestation", "Checking requirements")
+        loadingSpinner.startLoadingSpinner(
+            myContext,
+            "Verifying SafetyNet Attestation",
+            "Checking requirements"
+        )
         val nonceData = "Safety Net Sample: " + System.currentTimeMillis()
         val nonce: ByteArray = getRequestNonce(nonceData)
         //activity needs to be fixed
@@ -110,9 +113,18 @@ class SafetyNetAttestation : AppCompatActivity() {
         }
 
     private fun successNext() {
+
+        checkIfPINExists()
+
         loadingSpinner.stopTimer()
         val intent = Intent(myContext, MainActivity::class.java)
+        //val intent = Intent(myContext, CustomPinActivity::class.java)
         myContext.startActivity(intent)
+    }
+
+    private fun checkIfPINExists(){
+        // Settings Lock Startup Enabled
+        // Does PIN exists - create / enter
     }
 
 }
