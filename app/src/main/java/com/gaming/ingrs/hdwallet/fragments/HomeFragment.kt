@@ -1,23 +1,26 @@
 package com.gaming.ingrs.hdwallet.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import com.gaming.ingrs.hdwallet.R
 import com.gaming.ingrs.hdwallet.backend.Cryptography
+import com.gaming.ingrs.hdwallet.backend.OnSwipeTouchListener
 import com.gaming.ingrs.hdwallet.backend.QRCodeGenerator
+import com.gaming.ingrs.hdwallet.backend.RegisterSwipeTouchListener
 
 /**
  * A simple [Fragment] subclass.
  */
 class HomeFragment : Fragment() {
+
+    private lateinit var layout: FrameLayout
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,7 +32,15 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        testTouch()
         testQR()
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun testTouch(){
+        layout = requireView().findViewById(R.id.homeLayout) as FrameLayout
+        val swipe = RegisterSwipeTouchListener()
+        swipe.setTouchListener(requireContext(), layout)
     }
 
     private fun testQR() {
