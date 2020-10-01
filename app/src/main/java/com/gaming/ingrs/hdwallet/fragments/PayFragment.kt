@@ -1,5 +1,6 @@
 package com.gaming.ingrs.hdwallet.fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,16 +9,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.TextView
 import android.widget.Toast
 
 import com.gaming.ingrs.hdwallet.R
+import com.gaming.ingrs.hdwallet.backend.RegisterSwipeTouchListener
 import com.google.zxing.integration.android.IntentIntegrator
 
 /**
  * A simple [Fragment] subclass.
  */
 class PayFragment : Fragment() {
+
+    private lateinit var layout: FrameLayout
 
     companion object{
         lateinit var button : Button
@@ -34,6 +39,7 @@ class PayFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        setSwipeListener()
         init()
     }
 
@@ -74,5 +80,12 @@ class PayFragment : Fragment() {
         } else {
             super.onActivityResult(requestCode, resultCode, data)
         }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setSwipeListener(){
+        layout = requireView().findViewById(R.id.payLayout) as FrameLayout
+        val swipe = RegisterSwipeTouchListener()
+        swipe.setTouchListener(requireContext(), layout, parentFragmentManager, requireView())
     }
 }

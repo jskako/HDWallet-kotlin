@@ -55,3 +55,7 @@ x
 Happ/src/main/java/com/gaming/ingrs/hdwallet/backend/CustomPinActivity.kt,d\7\d7b944f4f79cd154af867fbd6865acc9287d715b
 y
 Iapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/SettingsFragment.kt,9\b\9b3fe8dd745fcda19f2b493e6edf613c0fa5f09b
+{
+Kapp/src/main/java/com/gaming/ingrs/hdwallet/backend/OnSwipeTouchListener.kt,6\2\622076a6923d3277dd9469c28ad2dfdd974e2126
+Å
+Qapp/src/main/java/com/gaming/ingrs/hdwallet/backend/RegisterSwipeTouchListener.kt,c\1\c14ff34828a90c85cd482f211090ea7b4a430bd6
