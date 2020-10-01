@@ -86,6 +86,6 @@ class PayFragment : Fragment() {
     private fun setSwipeListener(){
         layout = requireView().findViewById(R.id.payLayout) as FrameLayout
         val swipe = RegisterSwipeTouchListener()
-        swipe.setTouchListener(requireContext(), layout, parentFragmentManager, requireView())
+        swipe.setTouchListener(requireContext(), layout, requireView())
     }
 }

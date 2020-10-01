@@ -35,7 +35,7 @@ class AddressBookFragment : Fragment() {
     private fun setSwipeListener(){
         layout = requireView().findViewById(R.id.addressBookLayout) as FrameLayout
         val swipe = RegisterSwipeTouchListener()
-        swipe.setTouchListener(requireContext(), layout, parentFragmentManager, requireView())
+        swipe.setTouchListener(requireContext(), layout, requireView())
     }
 
 }

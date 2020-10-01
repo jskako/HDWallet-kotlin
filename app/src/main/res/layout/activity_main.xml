@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:background="@color/menu_color"
             android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme" />
+            android:theme="@style/ToolbarTheme" />
 
         <fragment
             android:id="@+id/startingFragment"

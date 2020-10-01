@@ -17,6 +17,7 @@
             android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="@font/gabriela"
             android:text="@string/hello_blank_fragment"
             app:layout_constraintStart_toStartOf="parent" />
 
