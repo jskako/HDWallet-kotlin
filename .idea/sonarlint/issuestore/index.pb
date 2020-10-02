@@ -59,3 +59,5 @@ Iapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/SettingsFragment.kt,9\b\
 Kapp/src/main/java/com/gaming/ingrs/hdwallet/backend/OnSwipeTouchListener.kt,6\2\622076a6923d3277dd9469c28ad2dfdd974e2126
 Å
 Qapp/src/main/java/com/gaming/ingrs/hdwallet/backend/RegisterSwipeTouchListener.kt,c\1\c14ff34828a90c85cd482f211090ea7b4a430bd6
+x
+Happ/src/main/java/com/gaming/ingrs/hdwallet/fragments/ReceiveFragment.kt,c\a\ca5de12778c43e61b5aa29bf52a4dd20749fbfb4

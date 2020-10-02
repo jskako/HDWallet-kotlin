@@ -1,9 +1,8 @@
 package com.gaming.ingrs.hdwallet
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.GravityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
@@ -19,6 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setToolbar()
+        changeActionBar(R.color.menu_color);
     }
 
     private fun setToolbar(){
@@ -28,9 +28,10 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(navigation_view, navController)
         NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
 
-        //Hide status bar
-        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
-        actionBar?.hide()
+    }
+
+    private fun changeActionBar(resourceColor: Int){
+        window.statusBarColor = ContextCompat.getColor(applicationContext, resourceColor)
     }
 
     override fun onSupportNavigateUp(): Boolean {
