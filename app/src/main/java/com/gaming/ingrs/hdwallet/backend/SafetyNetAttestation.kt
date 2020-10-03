@@ -56,7 +56,7 @@ class SafetyNetAttestation : AppCompatActivity() {
         val nonce: ByteArray = getRequestNonce(nonceData)
         //activity needs to be fixed
         val client: SafetyNetClient = SafetyNet.getClient(activity)
-        val task: Task<SafetyNetApi.AttestationResponse> = client.attest(nonce, API_KEY)
+        val task: Task<AttestationResponse> = client.attest(nonce, API_KEY)
         task.addOnSuccessListener(activity, mSuccessListener)
             .addOnFailureListener(activity, mFailureListener)
     }

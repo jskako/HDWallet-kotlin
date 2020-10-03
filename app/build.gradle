@@ -71,4 +71,7 @@ dependencies {
     // PIN screen
     implementation 'com.poovam:pin-edittext-field:1.2.3'
 
+    // Biometric
+    implementation 'androidx.biometric:biometric:1.0.1'
+
 }

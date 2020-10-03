@@ -51,8 +51,6 @@ u
 Eapp/src/main/java/com/gaming/ingrs/hdwallet/backend/LoadingSpinner.kt,7\6\76a465a3b9268637b2aa1dacbf9aa174237e3a80
 s
 Capp/src/main/java/com/gaming/ingrs/hdwallet/backend/Cryptography.kt,0\3\039174c9fe9585e5065c3eccb4b273dcb5ef012e
-x
-Happ/src/main/java/com/gaming/ingrs/hdwallet/backend/CustomPinActivity.kt,d\7\d7b944f4f79cd154af867fbd6865acc9287d715b
 y
 Iapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/SettingsFragment.kt,9\b\9b3fe8dd745fcda19f2b493e6edf613c0fa5f09b
 {
@@ -61,3 +59,5 @@ Kapp/src/main/java/com/gaming/ingrs/hdwallet/backend/OnSwipeTouchListener.kt,6\
 Qapp/src/main/java/com/gaming/ingrs/hdwallet/backend/RegisterSwipeTouchListener.kt,c\1\c14ff34828a90c85cd482f211090ea7b4a430bd6
 x
 Happ/src/main/java/com/gaming/ingrs/hdwallet/fragments/ReceiveFragment.kt,c\a\ca5de12778c43e61b5aa29bf52a4dd20749fbfb4
+w
+Gapp/src/main/java/com/gaming/ingrs/hdwallet/backend/BiometricManager.kt,d\0\d0c2d4b668d3df420751085b02129a5d42ac06f7

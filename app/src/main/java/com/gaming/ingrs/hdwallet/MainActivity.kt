@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity() {
         navController = Navigation.findNavController(this, R.id.startingFragment)
         NavigationUI.setupWithNavController(navigation_view, navController)
         NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
-
     }
 
     private fun changeActionBar(resourceColor: Int){

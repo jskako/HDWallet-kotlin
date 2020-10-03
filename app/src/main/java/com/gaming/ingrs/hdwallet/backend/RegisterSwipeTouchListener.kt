@@ -15,14 +15,12 @@ class RegisterSwipeTouchListener: AppCompatActivity() {
         layout.setOnTouchListener(object : OnSwipeTouchListener(context) {
             override fun onSwipeRight() {
                 super.onSwipeRight()
-                //Open navigation menu
-
+                view.findNavController().navigateUp()
             }
 
             override fun onSwipeDown() {
                 super.onSwipeDown()
                 //Back to previous fragment
-                view.findNavController().navigateUp()
             }
         })
     }
