@@ -61,3 +61,9 @@ x
 Happ/src/main/java/com/gaming/ingrs/hdwallet/fragments/ReceiveFragment.kt,c\a\ca5de12778c43e61b5aa29bf52a4dd20749fbfb4
 w
 Gapp/src/main/java/com/gaming/ingrs/hdwallet/backend/BiometricManager.kt,d\0\d0c2d4b668d3df420751085b02129a5d42ac06f7
+n
+>app/src/main/java/com/gaming/ingrs/hdwallet/WelcomeActivity.kt,9\5\95d6fe3d6d4e297b353223deec6eb84e7bd12b00
+€
+Papp/src/main/java/com/gaming/ingrs/hdwallet/fragments/welcome/WelcomeFragment.kt,9\f\9f00c01a7a030834c58ed7d27064a6a550eeca83
+p
+@app/src/main/java/com/gaming/ingrs/hdwallet/BiometricActivity.kt,6\6\66967b64babd3329826c87c019d1f7dcaf4e38d8

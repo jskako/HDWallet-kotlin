@@ -12,7 +12,6 @@ import android.widget.FrameLayout
 import com.gaming.ingrs.hdwallet.R
 import com.gaming.ingrs.hdwallet.backend.BiometricManager
 import com.gaming.ingrs.hdwallet.backend.RegisterSwipeTouchListener
-import kotlinx.android.synthetic.main.activity_main.*
 
 /**
  * A simple [Fragment] subclass.
@@ -38,8 +37,7 @@ class AboutFragment : Fragment() {
 
     private fun testPin(){
         val bm = BiometricManager()
-        val test = bm.biometricCheck(requireContext(), startingFragment!!)
-        Log.e("123Check","$test")
+        //bm.biometricCheck(requireContext(), startingFragment!!)
     }
 
     @SuppressLint("ClickableViewAccessibility")

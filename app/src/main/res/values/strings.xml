@@ -28,5 +28,13 @@
     <string name="transfer">Transfer</string>
     <string name="transactions">Transactions</string>
     <string name="information">Information</string>
+    <string name="welcome_title">Welcome</string>
+    <string name="welcome_description">Yes, we start with the most basic and simple.</string>
+    <string name="requirements">Check requirements\nSetup Your profile\nSetup or recover wallet</string>
+    <string name="next">Next</string>
+    <string name="biometric_user_canceled">ERROR - USER CANCELED</string>
+    <string name="biometric_canceled_description">User canceled authentication</string>
+    <string name="exit">EXIT</string>
+    <string name="try_again">Try again</string>
 
 </resources>

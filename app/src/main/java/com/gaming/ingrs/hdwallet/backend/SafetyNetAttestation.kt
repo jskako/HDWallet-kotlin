@@ -1,28 +1,33 @@
 package com.gaming.ingrs.hdwallet.backend
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.gaming.ingrs.hdwallet.MainActivity
+import com.gaming.ingrs.hdwallet.BiometricActivity
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.safetynet.SafetyNet
-import com.google.android.gms.safetynet.SafetyNetApi
 import com.google.android.gms.safetynet.SafetyNetApi.AttestationResponse
 import com.google.android.gms.safetynet.SafetyNetClient
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
+import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.security.SecureRandom
 import kotlin.system.exitProcess
 
 
+@SuppressLint("Registered")
 class SafetyNetAttestation : AppCompatActivity() {
+
+    private lateinit var context: Context
+    private lateinit var activity: Activity
 
     companion object {
         val loadingSpinner = LoadingSpinner()
@@ -30,7 +35,6 @@ class SafetyNetAttestation : AppCompatActivity() {
         private val mRandom = SecureRandom()
         private var mResult: String? = null
         private const val API_KEY = "AIzaSyDSHoihxEGmqBxHsrb9WsmoRoh3w2xptbE"
-        private lateinit var myContext: Context
 
         var thread: Thread = object : Thread() {
             override fun run() {
@@ -44,11 +48,12 @@ class SafetyNetAttestation : AppCompatActivity() {
         }
     }
 
-    fun sendSafetyNetRequest(activity: Activity, context: Context) {
-        myContext = context
+    fun sendSafetyNetRequest(myActivity: Activity, myContext: Context) {
+        this.context = myContext
+        this.activity = myActivity
         //Show Loading Spinner
         loadingSpinner.startLoadingSpinner(
-            myContext,
+            context,
             "Verifying SafetyNet Attestation",
             "Checking requirements"
         )
@@ -79,15 +84,6 @@ class SafetyNetAttestation : AppCompatActivity() {
             mResult = attestationResponse.jwsResult
             Log.d(TAG, "Success! SafetyNet result:\n$mResult\n")
             successNext()
-            /*
-                             TODO(developer): Forward this result to your server together with
-                             the nonce for verification.
-                             You can also parse the JwsResult locally to confirm that the API
-                             returned a response by checking for an 'error' field first and before
-                             retrying the request with an exponential backoff.
-                             NOTE: Do NOT rely on a local, client-side only check for security, you
-                             must verify the response on a remote server!
-                            */
         }
 
     private val mFailureListener: OnFailureListener =
@@ -113,18 +109,33 @@ class SafetyNetAttestation : AppCompatActivity() {
         }
 
     private fun successNext() {
-
-        checkIfPINExists()
-
         loadingSpinner.stopTimer()
-        val intent = Intent(myContext, MainActivity::class.java)
-        //val intent = Intent(myContext, CustomPinActivity::class.java)
-        myContext.startActivity(intent)
+        val intent = Intent(context, BiometricActivity::class.java)
+        context.startActivity(intent)
+        //If check true user exists, if false go to setup
+        /*when(checkIfWalletExist()){
+            false -> {
+                val intent = Intent(context, WelcomeActivity::class.java)
+                context.startActivity(intent)
+            }
+            true -> {
+                val intent = Intent(context, BiometricActivity::class.java)
+                context.startActivity(intent)
+            }
+        }*/
     }
 
-    private fun checkIfPINExists(){
-        // Settings Lock Startup Enabled
-        // Does PIN exists - create / enter
-    }
+    private fun checkIfWalletExist(): Boolean{
+        //TODO: Check profile, wallet
+        var check = false
+        val operations = Operations()
 
+        //Check profile
+        val profileMail = operations.readFromSharedPreferences(activity, "profileMail")
+        if(!profileMail.equals("0")){
+            check = true
+        }
+
+        return check
+    }
 }

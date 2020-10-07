@@ -2,9 +2,7 @@ package com.gaming.ingrs.hdwallet.backend
 
 import android.app.ProgressDialog
 import android.content.Context
-import android.content.Intent
 import android.os.Handler
-import androidx.core.content.ContextCompat.startActivity
 import kotlin.system.exitProcess
 
 
@@ -27,7 +25,6 @@ class LoadingSpinner {
     //If stuck on LoadingSpinner for 60 seconds exit app
     private fun exitTimer(exitTimer: Long){
         handler.postDelayed(Runnable {
-            // yourMethod();
             exitProcess(-1)
         }, 1000 * exitTimer) //after amount of exitTimer seconds
 
