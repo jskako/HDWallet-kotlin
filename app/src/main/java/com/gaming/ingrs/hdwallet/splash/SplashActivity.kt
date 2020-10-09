@@ -15,4 +15,8 @@ class SplashActivity: AppCompatActivity() {
         val safetyNet= SafetyNetAttestation()
         safetyNet.sendSafetyNetRequest(this@SplashActivity, this)
     }
+
+    override fun onBackPressed() {
+        // Disable back button, do nothing
+    }
 }

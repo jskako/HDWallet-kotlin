@@ -18,6 +18,10 @@ class WelcomeActivity : AppCompatActivity() {
         window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
     }
 
+    override fun onBackPressed() {
+        // Disable back button, do nothing
+    }
+
     private fun addFragment(){
         supportFragmentManager.beginTransaction()
             .replace(R.id.welcome_container, WelcomeFragment())

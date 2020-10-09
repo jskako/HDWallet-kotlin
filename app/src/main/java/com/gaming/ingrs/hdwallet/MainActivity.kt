@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setToolbar()
-        changeActionBar(R.color.menu_color);
+        changeActionBar(R.color.welcome_background);
     }
 
     private fun setToolbar(){
@@ -35,6 +35,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return NavigationUI.navigateUp(navController, drawer_layout)
+    }
+
+    override fun onBackPressed() {
+        // Disable back button, do nothing
     }
 
     /*private fun test() {

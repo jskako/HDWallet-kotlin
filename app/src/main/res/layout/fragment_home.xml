@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/homeLayout"
     android:layout_width="match_parent"
+    android:background="@color/welcome_background"
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
@@ -14,34 +15,32 @@
 
         <!-- TODO: Update blank fragment layout -->
         <TextView
-            android:id="@+id/text"
+            android:id="@+id/bitcoinBalance"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
             android:fontFamily="@font/gabriela"
-            android:text="@string/hello_blank_fragment"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:text="0.00 ₿"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="70sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/qrGenerator"
-            android:layout_width="wrap_content"
-            android:layout_height="87dp"
-            android:layout_marginTop="32dp"
-            android:text="QR Code Generator"
-            app:layout_constraintEnd_toStartOf="@+id/text"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toEndOf="@+id/text"
-            app:layout_constraintTop_toTopOf="@+id/text" />
-
-        <ImageView
-            android:id="@+id/imageViewQR"
-            android:layout_width="301dp"
-            android:layout_height="273dp"
-            android:layout_marginTop="24dp"
-            android:src="@drawable/ic_settings"
-            app:layout_constraintEnd_toStartOf="@+id/text"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/text"
-            app:layout_constraintTop_toBottomOf="@+id/qrGenerator" />
+        <TextView
+            android:id="@+id/biometricDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gabriela"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="(0.00 €)"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bitcoinBalance" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

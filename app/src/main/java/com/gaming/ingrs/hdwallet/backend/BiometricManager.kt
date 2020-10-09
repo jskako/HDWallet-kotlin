@@ -2,6 +2,7 @@ package com.gaming.ingrs.hdwallet.backend
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Button
@@ -15,7 +16,9 @@ import androidx.fragment.app.FragmentActivity
 import com.gaming.ingrs.hdwallet.MainActivity
 import com.gaming.ingrs.hdwallet.R
 import java.util.concurrent.Executor
-import kotlin.system.exitProcess
+import android.provider.Settings
+import androidx.core.app.ActivityCompat.startActivityForResult
+import com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
 
 class BiometricManager {
 
@@ -31,18 +34,15 @@ class BiometricManager {
         val biometricManager = BiometricManager.from(context)
         init(fragment)
 
-        when {
-            biometricManager.canAuthenticate() == BiometricManager.BIOMETRIC_SUCCESS -> {
+        when (biometricManager.canAuthenticate()) {
+            BiometricManager.BIOMETRIC_SUCCESS ->
                 authUser(executor, context, fragment)
-            }
-            biometricManager.canAuthenticate() == BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE -> {
-                //No hardware
-            }
-            biometricManager.canAuthenticate() == BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE -> {
-                //Hardware unvailable
-            }
-            biometricManager.canAuthenticate() == BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-                //NONE ENROLLED
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->
+                Log.e("MY_APP_TAG", "No biometric features available on this device.")
+            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE ->
+                Log.e("MY_APP_TAG", "Biometric features are currently unavailable.")
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
+                // Prompts the user to create credentials that your app accepts.
             }
         }
     }
@@ -64,7 +64,7 @@ class BiometricManager {
             .setTitle("Authentication")
             //.setSubtitle("Owner confirmation")
             .setDescription("Scan fingerprint or enter PIN")
-            .setDeviceCredentialAllowed(true)
+            .setNegativeButtonText("Use password")
             .build()
 
         val biometricPrompt = BiometricPrompt(fragment, executor,
@@ -90,11 +90,14 @@ class BiometricManager {
                         biometricButton.text = context.getString(R.string.try_again)
                         biometricTitle.text = context.getString(R.string.biometric_user_canceled)
                         biometricDescription.text = context.getString(R.string.biometric_canceled_description)
-                        biometricButton.setOnClickListener {
-                            exitProcess(-1)
-                        }
-                    } else{
 
+                        biometricButton.setOnClickListener {
+                            BiometricManager().biometricCheck(context, fragment)
+                        }
+                    }
+                    if(errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
+                        Log.e("User clicked on negative button", "User clicked")
+                        //loginWithPassword() // Because negative button says use application password
                     }
                 }
                 override fun onAuthenticationFailed() {

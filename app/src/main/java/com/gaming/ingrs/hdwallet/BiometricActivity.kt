@@ -17,4 +17,8 @@ class BiometricActivity : AppCompatActivity() {
     private fun biometricCheck(){
         BiometricManager().biometricCheck(this, this)
     }
+
+    override fun onBackPressed() {
+        // Disable back button, do nothing
+    }
 }

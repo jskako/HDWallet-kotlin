@@ -33,22 +33,22 @@ class HomeFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        testQR()
+        //testQR()
     }
 
     private fun testQR() {
         testCrypt()
-        val button = requireView().findViewById(R.id.qrGenerator) as Button
-        val imv = requireView().findViewById(R.id.imageViewQR) as ImageView
-        val text = requireView().findViewById(R.id.text) as TextView
+        //val button = requireView().findViewById(R.id.qrGenerator) as Button
+        //val imv = requireView().findViewById(R.id.imageViewQR) as ImageView
+        //val text = requireView().findViewById(R.id.text) as TextView
 
         // Test QR Generator
-        button.setOnClickListener {
+        /*button.setOnClickListener {
             Toast.makeText(context, "message", Toast.LENGTH_SHORT).show()
             val qrc = QRCodeGenerator()
             val bitmap = qrc.generateQRCode("Something Generated")
             imv.setImageBitmap(bitmap)
-        }
+        }*/
     }
 
     private fun testCrypt(){
