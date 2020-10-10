@@ -36,5 +36,7 @@
     <string name="biometric_canceled_description">User canceled authentication</string>
     <string name="exit">EXIT</string>
     <string name="try_again">Try again</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

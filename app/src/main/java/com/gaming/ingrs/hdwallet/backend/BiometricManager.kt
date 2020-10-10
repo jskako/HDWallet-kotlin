@@ -16,9 +16,6 @@ import androidx.fragment.app.FragmentActivity
 import com.gaming.ingrs.hdwallet.MainActivity
 import com.gaming.ingrs.hdwallet.R
 import java.util.concurrent.Executor
-import android.provider.Settings
-import androidx.core.app.ActivityCompat.startActivityForResult
-import com.google.zxing.integration.android.IntentIntegrator.REQUEST_CODE
 
 class BiometricManager {
 
@@ -97,7 +94,8 @@ class BiometricManager {
                     }
                     if(errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
                         Log.e("User clicked on negative button", "User clicked")
-                        //loginWithPassword() // Because negative button says use application password
+                        val oper = Operations()
+                        oper.customDialog(context)
                     }
                 }
                 override fun onAuthenticationFailed() {
