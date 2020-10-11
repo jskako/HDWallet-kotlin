@@ -122,6 +122,8 @@ class BiometricActivity : AppCompatActivity() {
                     }
                     if(errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
                         val intent = Intent(context, PinActivity::class.java)
+                        intent.putExtra("description", getString(R.string.pin_identification_description))
+                        intent.putExtra("keySecret", "tempPin")
                         startActivityForResult(intent, PIN_RETURNED)
                     }
                 }

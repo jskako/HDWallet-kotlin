@@ -40,5 +40,6 @@
     <string name="cancel">Cancel</string>
     <string name="identification">Identification</string>
     <string name="pin_identification_description">Please enter PIN to identify Yourself</string>
+    <string name="incorrect_pin">Error: PINs You entered are not same</string>
 
 </resources>

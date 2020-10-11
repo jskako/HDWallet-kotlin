@@ -5,10 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.gaming.ingrs.hdwallet.backend.Cryptography
 import com.gaming.ingrs.hdwallet.backend.Operations
@@ -21,12 +21,16 @@ class PinActivity() : AppCompatActivity() {
 
         const val NUM_OF_DIGITS = 4
         var numTemp = ""
+        lateinit var description: TextView
+        lateinit var secretKeyLocation: String
+        lateinit var returnActivityResult: String
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pin)
         changeActionBar(R.color.welcome_background)
+        init()
         val layout: LinearLayout = findViewById(R.id.codeLayout)
         for (index in 0 until (layout.childCount)) {
             val view: View = layout.getChildAt(index)
@@ -37,6 +41,15 @@ class PinActivity() : AppCompatActivity() {
         }
 
         editTextArray[0].requestFocus()
+    }
+
+    private fun init(){
+        description = findViewById(R.id.pinDescription)
+        val descriptionText = intent.getStringExtra("description")!!
+        secretKeyLocation = intent.getStringExtra("keySecret")!!
+        returnActivityResult = intent.getStringExtra("returnActivityResult")
+
+        description.text = descriptionText
     }
 
     private fun changeActionBar(resourceColor: Int){
@@ -96,11 +109,14 @@ class PinActivity() : AppCompatActivity() {
                             val digFour: EditText = findViewById(R.id.digit4)
 
                             val pin = digOne.text.toString() + digTwo.text.toString() + digThree.text.toString() + digFour.text.toString()
-                            val secretKey = Cryptography().generateSecretKey("tempPin")
+                            val secretKey = Cryptography().generateSecretKey(secretKeyLocation)
                             val encryptedTempPin = Cryptography().encryptMsg(pin, secretKey)
-                            Operations().saveHashMap("tempPin", encryptedTempPin, this@PinActivity)
+                            Operations().saveHashMap(secretKeyLocation, encryptedTempPin, this@PinActivity)
 
-                            setResult(Activity.RESULT_OK)
+                            when(returnActivityResult){
+                                "1" -> setResult(Activity.RESULT_OK)
+                                "2" -> setResult(Activity.RESULT_FIRST_USER)
+                            }
                             finish()
                         }
                     }
