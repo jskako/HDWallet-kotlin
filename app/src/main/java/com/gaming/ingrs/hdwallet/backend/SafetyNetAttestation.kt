@@ -8,6 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.gaming.ingrs.hdwallet.BiometricActivity
+import com.gaming.ingrs.hdwallet.WelcomeActivity
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.safetynet.SafetyNet
@@ -110,10 +111,7 @@ class SafetyNetAttestation : AppCompatActivity() {
 
     private fun successNext() {
         loadingSpinner.stopTimer()
-        val intent = Intent(context, BiometricActivity::class.java)
-        context.startActivity(intent)
-        //If check true user exists, if false go to setup
-        /*when(checkIfWalletExist()){
+        when(checkIfWalletExist()){
             false -> {
                 val intent = Intent(context, WelcomeActivity::class.java)
                 context.startActivity(intent)
@@ -122,7 +120,7 @@ class SafetyNetAttestation : AppCompatActivity() {
                 val intent = Intent(context, BiometricActivity::class.java)
                 context.startActivity(intent)
             }
-        }*/
+        }
     }
 
     private fun checkIfWalletExist(): Boolean{

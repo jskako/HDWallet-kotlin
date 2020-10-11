@@ -13,7 +13,7 @@ import androidx.core.content.ContextCompat
 import com.gaming.ingrs.hdwallet.backend.Cryptography
 import com.gaming.ingrs.hdwallet.backend.Operations
 
-class PinActivity : AppCompatActivity() {
+class PinActivity() : AppCompatActivity() {
 
     private val editTextArray: ArrayList<EditText> = ArrayList(NUM_OF_DIGITS)
 
