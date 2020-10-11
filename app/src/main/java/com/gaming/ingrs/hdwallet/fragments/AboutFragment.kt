@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 
 import com.gaming.ingrs.hdwallet.R
-import com.gaming.ingrs.hdwallet.backend.BiometricManager
 import com.gaming.ingrs.hdwallet.backend.RegisterSwipeTouchListener
 
 /**
@@ -31,13 +30,6 @@ class AboutFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setSwipeListener()
-        val testPin = testPin()
-        Log.e("123: ","$testPin")
-    }
-
-    private fun testPin(){
-        val bm = BiometricManager()
-        //bm.biometricCheck(requireContext(), startingFragment!!)
     }
 
     @SuppressLint("ClickableViewAccessibility")
