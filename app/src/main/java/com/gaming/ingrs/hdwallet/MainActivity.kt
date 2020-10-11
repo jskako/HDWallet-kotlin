@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setToolbar()
-        changeActionBar(R.color.welcome_background);
+        changeActionBar(R.color.welcome_background)
     }
 
     private fun setToolbar(){

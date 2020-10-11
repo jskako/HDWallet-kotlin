@@ -32,6 +32,7 @@ class BiometricActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_biometric)
+        //Set this to gray
         window.statusBarColor = ContextCompat.getColor(applicationContext, R.color.welcome_background)
         init()
         biometricCheck()
@@ -62,12 +63,18 @@ class BiometricActivity : AppCompatActivity() {
         }
     }
 
-    private fun init(){
+    private fun init() {
+        changeActionBar(R.color.biometric_background)
+
         biometricTitle = findViewById(R.id.biometricTitle)
         biometricDescription = findViewById(R.id.biometricDescription)
         biometricWarningImage = findViewById(R.id.biometricWarningImage)
         biometricButton = findViewById(R.id.biometricButton)
+        hideEverything()
+    }
 
+
+    private fun hideEverything(){
         biometricTitle.visibility = View.INVISIBLE
         biometricDescription.visibility = View.INVISIBLE
         biometricWarningImage.visibility = View.INVISIBLE
@@ -97,6 +104,7 @@ class BiometricActivity : AppCompatActivity() {
                     super.onAuthenticationError(errorCode, errString)
                     //Error auth
                     if (errorCode == BiometricConstants.ERROR_USER_CANCELED) {
+                        changeActionBar(R.color.welcome_background)
                         biometricTitle.visibility = View.VISIBLE
                         biometricDescription.visibility = View.VISIBLE
                         biometricWarningImage.visibility = View.VISIBLE
@@ -107,6 +115,8 @@ class BiometricActivity : AppCompatActivity() {
                         biometricDescription.text = context.getString(R.string.biometric_canceled_description)
 
                         biometricButton.setOnClickListener {
+                            hideEverything()
+                            changeActionBar(R.color.biometric_background)
                             biometricCheck(context, fragment)
                         }
                     }
@@ -136,6 +146,10 @@ class BiometricActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun changeActionBar(resourceColor: Int){
+        window.statusBarColor = ContextCompat.getColor(applicationContext, resourceColor)
     }
 
 }

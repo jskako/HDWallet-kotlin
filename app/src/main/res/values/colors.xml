@@ -8,4 +8,5 @@
     <color name="menu_color">#ffba08</color>
     <color name ="welcome_background">#0077b6</color>
     <color name ="welcome_button_background">#ffb703</color>
+    <color name ="biometric_background">#001E38</color>
 </resources>

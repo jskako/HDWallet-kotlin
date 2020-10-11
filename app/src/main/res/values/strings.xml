@@ -38,5 +38,7 @@
     <string name="try_again">Try again</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
+    <string name="identification">Identification</string>
+    <string name="pin_identification_description">Please enter PIN to identify Yourself</string>
 
 </resources>

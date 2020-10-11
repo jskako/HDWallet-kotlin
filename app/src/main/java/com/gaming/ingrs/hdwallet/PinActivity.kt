@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
+import androidx.core.content.ContextCompat
 import com.gaming.ingrs.hdwallet.backend.Cryptography
 import com.gaming.ingrs.hdwallet.backend.Operations
 
@@ -25,7 +26,7 @@ class PinActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pin)
-
+        changeActionBar(R.color.welcome_background)
         val layout: LinearLayout = findViewById(R.id.codeLayout)
         for (index in 0 until (layout.childCount)) {
             val view: View = layout.getChildAt(index)
@@ -36,6 +37,10 @@ class PinActivity : AppCompatActivity() {
         }
 
         editTextArray[0].requestFocus()
+    }
+
+    private fun changeActionBar(resourceColor: Int){
+        window.statusBarColor = ContextCompat.getColor(applicationContext, resourceColor)
     }
 
     private fun testCodeValidity(): String {

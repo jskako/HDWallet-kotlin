@@ -4,12 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/welcome_background"
     tools:context=".PinActivity">
+
+    <TextView
+        android:id="@+id/pinTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/gabriela"
+        android:text="@string/identification"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pinDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/gabriela"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="@string/pin_identification_description"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pinTitle" />
+
 
     <LinearLayout
         android:id="@+id/codeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="60dp"
+        app:layout_constraintTop_toBottomOf="@+id/pinDescription"
         android:orientation="horizontal">
 
         <EditText
@@ -60,5 +94,16 @@
             android:textAlignment="center" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/biometricWarningImage"
+        android:layout_width="240dp"
+        android:layout_height="190dp"
+        android:src="@drawable/biometric_warning"
+        app:layout_constraintTop_toBottomOf="@+id/codeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="50dp"
+        android:gravity="center" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
