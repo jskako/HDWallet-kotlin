@@ -40,6 +40,14 @@
     <string name="cancel">Cancel</string>
     <string name="identification">Identification</string>
     <string name="pin_identification_description">Please enter PIN to identify Yourself</string>
-    <string name="incorrect_pin">Error: PINs You entered are not same</string>
+    <string name="incorrect_pin_check">Error: PINs You entered are not same</string>
+    <string name="incorrect_pin">Incorrect PIN</string>
+    <string name="enter_pin_again">Enter Your PIN again</string>
+    <string name="auth_failed">Authentication failed</string>
+    <string name="mail_description">We need Your mail \nbut we promise that we \nare not going to share it</string>
+    <string name="mail_title">Oh No!</string>
+    <string name="verif_mail_desc">Enter confirmation code \nthat we send to \nYour mail address</string>
+    <string name="verify">Verify</string>
+    <string name="mail_verification_title">HDWallet Mail Verification</string>
 
 </resources>

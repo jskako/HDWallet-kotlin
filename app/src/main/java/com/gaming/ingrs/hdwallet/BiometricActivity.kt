@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -15,7 +14,6 @@ import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.gaming.ingrs.hdwallet.backend.Cryptography
-import com.gaming.ingrs.hdwallet.backend.Operations
 import java.util.concurrent.Executor
 
 class BiometricActivity : AppCompatActivity() {
@@ -46,7 +44,7 @@ class BiometricActivity : AppCompatActivity() {
         // Disable back button, do nothing
     }
 
-    fun biometricCheck(context: Context, fragment: FragmentActivity){
+    private fun biometricCheck(context: Context, fragment: FragmentActivity){
         val executor = ContextCompat.getMainExecutor(context)
         val biometricManager = androidx.biometric.BiometricManager.from(context)
 
@@ -54,11 +52,11 @@ class BiometricActivity : AppCompatActivity() {
             androidx.biometric.BiometricManager.BIOMETRIC_SUCCESS ->
                 authUser(executor, context, fragment)
             androidx.biometric.BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->
-                Log.e("MY_APP_TAG", "No biometric features available on this device.")
+                negativeButtonCall()
             androidx.biometric.BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE ->
-                Log.e("MY_APP_TAG", "Biometric features are currently unavailable.")
+                negativeButtonCall()
             androidx.biometric.BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED -> {
-                // Prompts the user to create credentials that your app accepts.
+                negativeButtonCall()
             }
         }
     }
@@ -84,7 +82,6 @@ class BiometricActivity : AppCompatActivity() {
     private fun authUser(executor: Executor, context: Context, fragment: FragmentActivity) {
         val promptInfo = BiometricPrompt.PromptInfo.Builder()
             .setTitle("Authentication")
-            //.setSubtitle("Owner confirmation")
             .setDescription("Scan fingerprint or enter PIN")
             .setNegativeButtonText("Use password")
             .build()
@@ -102,37 +99,63 @@ class BiometricActivity : AppCompatActivity() {
                     errorCode: Int, errString: CharSequence
                 ) {
                     super.onAuthenticationError(errorCode, errString)
-                    //Error auth
-                    if (errorCode == BiometricConstants.ERROR_USER_CANCELED) {
-                        changeActionBar(R.color.welcome_background)
-                        biometricTitle.visibility = View.VISIBLE
-                        biometricDescription.visibility = View.VISIBLE
-                        biometricWarningImage.visibility = View.VISIBLE
-                        biometricButton.visibility = View.VISIBLE
-
-                        biometricButton.text = context.getString(R.string.try_again)
-                        biometricTitle.text = context.getString(R.string.biometric_user_canceled)
-                        biometricDescription.text = context.getString(R.string.biometric_canceled_description)
-
-                        biometricButton.setOnClickListener {
-                            hideEverything()
-                            changeActionBar(R.color.biometric_background)
-                            biometricCheck(context, fragment)
+                    when(errorCode) {
+                        BiometricConstants.ERROR_USER_CANCELED -> {
+                            onError(getString(R.string.biometric_user_canceled), getString(R.string.biometric_canceled_description))
                         }
-                    }
-                    if(errorCode == BiometricPrompt.ERROR_NEGATIVE_BUTTON) {
-                        val intent = Intent(context, PinActivity::class.java)
-                        intent.putExtra("description", getString(R.string.pin_identification_description))
-                        intent.putExtra("keySecret", "tempPin")
-                        startActivityForResult(intent, PIN_RETURNED)
+                        BiometricPrompt.ERROR_NEGATIVE_BUTTON -> {
+                            negativeButtonCall()
+                        }
+                        BiometricConstants.ERROR_CANCELED -> {
+                            onError(getString(R.string.auth_failed), getString(R.string.pin_identification_description))
+                        }
+                        BiometricConstants.ERROR_HW_NOT_PRESENT -> {
+                            negativeButtonCall()
+                        }
+                        BiometricConstants.ERROR_HW_UNAVAILABLE -> {
+                            negativeButtonCall()
+                        }
+                        BiometricConstants.ERROR_LOCKOUT -> {
+                            negativeButtonCall()
+                        }
+                        BiometricConstants.ERROR_LOCKOUT_PERMANENT -> {
+                            negativeButtonCall()
+                        }
+                        BiometricConstants.ERROR_NO_BIOMETRICS -> {
+                            negativeButtonCall()
+                        }
+                        BiometricConstants.ERROR_NO_DEVICE_CREDENTIAL -> {
+                            negativeButtonCall()
+                        }
+                        BiometricConstants.ERROR_NO_SPACE -> {
+                            negativeButtonCall()
+                        }
+                        BiometricConstants.ERROR_TIMEOUT -> {
+                            negativeButtonCall()
+                        }
+                        BiometricConstants.ERROR_UNABLE_TO_PROCESS -> {
+                            negativeButtonCall()
+                        }
+                        BiometricConstants.ERROR_VENDOR -> {
+                            negativeButtonCall()
+                        }
                     }
                 }
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
                     //Failed auth
+                    onError(getString(R.string.auth_failed), getString(R.string.pin_identification_description))
                 }
             })
         biometricPrompt.authenticate(promptInfo)
+    }
+
+    fun negativeButtonCall(){
+        val intent = Intent(this, PinActivity::class.java)
+        intent.putExtra("description", getString(R.string.pin_identification_description))
+        intent.putExtra("returnActivityResult", "1")
+        intent.putExtra("keySecret", "tempPin")
+        startActivityForResult(intent, PIN_RETURNED)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -140,13 +163,37 @@ class BiometricActivity : AppCompatActivity() {
         when(requestCode){
             PIN_RETURNED -> {
                 if(resultCode ==  Activity.RESULT_OK){
-                    val encryptedTempPin = Operations().getHashMap("tempPin", this)
-                    val secretKey = Cryptography().getSecretKey("tempPin")
-                    val decryptPIN = Cryptography().decryptMsg(encryptedTempPin, secretKey)?.decodeToString()
-
-                    //Here we will check if PIN is correct and move on
+                    successGoNext()
                 }
             }
+        }
+    }
+
+    private fun successGoNext(){
+        val pinCorrect = Cryptography().pinCompare(this, this)
+        if(pinCorrect){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }else{
+            onError(getString(R.string.incorrect_pin), getString(R.string.pin_identification_description))
+        }
+    }
+
+    private fun onError(title: String, description: String){
+        changeActionBar(R.color.welcome_background)
+        biometricTitle.visibility = View.VISIBLE
+        biometricDescription.visibility = View.VISIBLE
+        biometricWarningImage.visibility = View.VISIBLE
+        biometricButton.visibility = View.VISIBLE
+
+        biometricButton.text = getString(R.string.try_again)
+        biometricTitle.text = title
+        biometricDescription.text = description
+
+        biometricButton.setOnClickListener {
+            hideEverything()
+            changeActionBar(R.color.biometric_background)
+            biometricCheck(this, this)
         }
     }
 

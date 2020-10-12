@@ -6,6 +6,8 @@ import android.preference.PreferenceManager
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 
 class Operations {
@@ -30,9 +32,23 @@ class Operations {
         }
     }
 
+    fun isEmailValid(email: String?): Boolean {
+        val expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$"
+        val pattern: Pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE)
+        val matcher: Matcher = pattern.matcher(email)
+        return matcher.matches()
+    }
+
     fun readFromSharedPreferences(activity: Activity, key: String): String? {
         val sharedPref = activity.getPreferences(Context.MODE_PRIVATE)
         return sharedPref.getString(key, "0")
+    }
+
+    fun deleteFromSharedPreferences(key: String, context: Context){
+        val mySPrefs = PreferenceManager.getDefaultSharedPreferences(context)
+        val editor = mySPrefs.edit()
+        editor.remove(key)
+        editor.apply()
     }
 
     fun saveHashMap(key: String?, obj: Any?, activity: Activity) {

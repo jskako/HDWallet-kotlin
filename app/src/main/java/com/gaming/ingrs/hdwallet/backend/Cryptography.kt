@@ -1,6 +1,7 @@
 package com.gaming.ingrs.hdwallet.backend
 
 import android.app.Activity
+import android.content.Context
 import android.preference.PreferenceManager
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
@@ -57,4 +58,24 @@ class Cryptography {
         return cipher.doFinal(encryptedBytes)
     }
 
+    fun pinCompare(activity: Activity, context: Context): Boolean{
+        val encryptedTempPin = Operations().getHashMap("tempPin", activity)
+        val secretTempPinKey = Cryptography().getSecretKey("tempPin")
+        val decryptTempPIN = Cryptography().decryptMsg(encryptedTempPin, secretTempPinKey)?.decodeToString()
+
+        val encryptedPin = Operations().getHashMap("pin", activity)
+        val secretPINKey = Cryptography().getSecretKey("pin")
+        val decryptPIN = Cryptography().decryptMsg(encryptedPin, secretPINKey)?.decodeToString()
+
+        Operations().deleteFromSharedPreferences("tempPin", context)
+
+        return decryptTempPIN == decryptPIN
+    }
+
+    fun pinExists(activity: Activity): Boolean{
+        val encryptedTempPin = Operations().getHashMap("pin", activity)
+        val secretTempPinKey = Cryptography().getSecretKey("pin")
+        val decryptTempPIN = Cryptography().decryptMsg(encryptedTempPin, secretTempPinKey)?.decodeToString()
+        return !decryptTempPIN.isNullOrEmpty()
+    }
 }

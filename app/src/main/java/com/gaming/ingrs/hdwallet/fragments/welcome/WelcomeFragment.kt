@@ -2,9 +2,7 @@ package com.gaming.ingrs.hdwallet.fragments.welcome
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Color.red
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import com.gaming.ingrs.hdwallet.PinActivity
-
 import com.gaming.ingrs.hdwallet.R
 import com.gaming.ingrs.hdwallet.backend.Cryptography
 import com.gaming.ingrs.hdwallet.backend.Operations
@@ -88,24 +85,23 @@ class WelcomeFragment : Fragment() {
                         startActivityForResult(intent, PIN_RETURNED)
                     }
                     Activity.RESULT_FIRST_USER -> {
-                        val encryptedPin =
-                            activity?.let { Operations().getHashMap("pin", it) }
-                        val encryptedTempPin =
-                            activity?.let { Operations().getHashMap("tempPin", it) }
-                        val secretKeyPin = Cryptography().getSecretKey("pin")
-                        val secretKeyTempPin = Cryptography().getSecretKey("tempPin")
-                        val decryptPIN = Cryptography().decryptMsg(encryptedPin, secretKeyPin)?.decodeToString()
-                        val decryptTempPIN = Cryptography().decryptMsg(encryptedTempPin, secretKeyTempPin)?.decodeToString()
-                        if(decryptPIN == decryptTempPIN){
-                            Log.e("123","PIN CORRECT")
+
+                        val pinCorrect = activity?.let { context?.let { it1 ->
+                            Cryptography().pinCompare(it,
+                                it1
+                            )
+                        } }
+                        if(pinCorrect!!){
+                            Operations().deleteFromSharedPreferences("tempPin", requireContext())
                             requireFragmentManager().beginTransaction()
                                 .replace(R.id.welcome_container, MailFragment())
                                 .addToBackStack(null)
                                 .commit()
                         }else{
-                            description.text = getString(R.string.incorrect_pin)
+                            Operations().deleteFromSharedPreferences("pin", requireContext())
+                            Operations().deleteFromSharedPreferences("tempPin", requireContext())
+                            description.text = getString(R.string.incorrect_pin_check)
                             description.setTextColor(resources.getColor(R.color.red))
-                            Log.e("123","PIN INCORRECT")
                         }
                     }
                 }

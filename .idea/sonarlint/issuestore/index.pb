@@ -67,3 +67,11 @@ p
 @app/src/main/java/com/gaming/ingrs/hdwallet/BiometricActivity.kt,6\6\66967b64babd3329826c87c019d1f7dcaf4e38d8
 j
 :app/src/main/java/com/gaming/ingrs/hdwallet/PinActivity.kt,d\5\d5a9871e529e7b8e23c6907d7aacf958b15a3e4c
+|
+Lapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/welcome/PinFragment.kt,e\a\ea9cf18c661025b6abb99394d146a8df5c2c9677
+}
+Mapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/welcome/MailFragment.kt,9\7\97418b9a617dd2b469acd029f10bb255625def50
+
+Oapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/welcome/WalletFragment.kt,1\d\1df16ea7998a27364c29832fcc5aa96463717c52
+v
+Fapp/src/main/java/com/gaming/ingrs/hdwallet/backend/PasswordManager.kt,4\8\483f73bf2dce5d54c5acbe758f34783bb2c7e99e

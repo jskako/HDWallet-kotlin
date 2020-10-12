@@ -128,11 +128,12 @@ class SafetyNetAttestation : AppCompatActivity() {
         var check = false
         val operations = Operations()
 
+        //Check PIN
+        check = Cryptography().pinExists(activity)
+
         //Check profile
         val profileMail = operations.readFromSharedPreferences(activity, "profileMail")
-        if(!profileMail.equals("0")){
-            check = true
-        }
+        check = !profileMail.equals("0")
 
         return check
     }
