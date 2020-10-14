@@ -5,6 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
+import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.Toast
 
 import com.gaming.ingrs.hdwallet.R
 
@@ -12,6 +16,11 @@ import com.gaming.ingrs.hdwallet.R
  * A simple [Fragment] subclass.
  */
 class WalletFragment : Fragment() {
+
+    companion object{
+        lateinit var newWalletButton: Button
+        lateinit var recoverWalletButton: Button
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,7 +32,30 @@ class WalletFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        init()
+        setButtons()
+    }
 
+    private fun setButtons(){
+        newWalletButton.setOnClickListener {
+            requireFragmentManager().beginTransaction()
+                .replace(R.id.welcome_container, NewWalletFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
+        recoverWalletButton.setOnClickListener {
+            Toast.makeText(
+                context,
+                "Not implemented yet!",
+                Toast.LENGTH_LONG
+            ).show();
+        }
+    }
+
+    private fun init(){
+        newWalletButton = requireActivity().findViewById(R.id.newWalletButton)
+        recoverWalletButton = requireActivity().findViewById(R.id.recoverWalletButton)
     }
 
 }

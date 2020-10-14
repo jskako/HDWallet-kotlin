@@ -3,6 +3,7 @@ package com.gaming.ingrs.hdwallet.backend
 import android.app.Activity
 import android.content.Context
 import android.preference.PreferenceManager
+import com.gaming.ingrs.hdwallet.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
@@ -24,12 +25,11 @@ class Operations {
         return builder.toString()
     }
 
-    private fun writeToSharedPreferences(activity: Activity, key: String, data: String) {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        with(sharedPref.edit()) {
-            putString(key, data)
-            commit()
-        }
+    fun writeToSharedPreferences(activity: Activity, key: String, data: String) {
+        val sharedPreference =  activity.getSharedPreferences("HDWallet",Context.MODE_PRIVATE)
+        val editor = sharedPreference.edit()
+        editor.putString(key,data)
+        editor.commit()
     }
 
     fun isEmailValid(email: String?): Boolean {
@@ -40,8 +40,8 @@ class Operations {
     }
 
     fun readFromSharedPreferences(activity: Activity, key: String): String? {
-        val sharedPref = activity.getPreferences(Context.MODE_PRIVATE)
-        return sharedPref.getString(key, "0")
+        val sharedPreference =  activity.getSharedPreferences("HDWallet",Context.MODE_PRIVATE)
+        return sharedPreference.getString(key,"0")
     }
 
     fun deleteFromSharedPreferences(key: String, context: Context){

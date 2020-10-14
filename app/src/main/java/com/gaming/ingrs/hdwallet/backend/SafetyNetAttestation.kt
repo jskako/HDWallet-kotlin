@@ -130,11 +130,18 @@ class SafetyNetAttestation : AppCompatActivity() {
 
         //Check PIN
         check = Cryptography().pinExists(activity)
-
-        //Check profile
-        val profileMail = operations.readFromSharedPreferences(activity, "profileMail")
+        val profileMail = operations.readFromSharedPreferences(activity, "userMail")
         check = !profileMail.equals("0")
 
+        //Wallet check
+        val tempSeedPhrase = operations.readFromSharedPreferences(activity, "tempSeedPhrase")
+        val seedPhrase = operations.readFromSharedPreferences(activity, "seedPhrase")
+
+        Log.e("123123tempSeedPhrase", "$tempSeedPhrase")
+        Log.e("123123seedPhrase", "$seedPhrase")
+        Log.e("123123userMail", "$profileMail")
+
         return check
+        //Check profil
     }
 }

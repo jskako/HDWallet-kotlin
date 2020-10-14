@@ -5,15 +5,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/welcome_background"
-    tools:context=".fragments.welcome.MailFragment">
-
+    tools:context=".fragments.welcome.NewWalletFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ProgressBar
-            android:id="@+id/loading_spinner"
+            android:id="@+id/new_wallet_loading_spinner"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="20dp"
@@ -26,12 +25,12 @@
             android:layout_gravity="center" />
 
         <TextView
-            android:id="@+id/mailTitle"
+            android:id="@+id/newWalletTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:fontFamily="@font/gabriela"
-            android:text="@string/mail_title"
+            android:text="@string/new_wallet_thank_you"
             android:gravity="center"
             android:textColor="@color/white"
             android:textSize="40sp"
@@ -40,76 +39,62 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/mailDescription"
+            android:id="@+id/newWalletDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/gabriela"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:text="@string/mail_description"
+            android:text="@string/new_wallet_description"
             android:textColor="@color/white"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mailTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/newWalletTitle" />
 
-        <EditText
-            android:id="@+id/enteredMail"
+        <Button
+            android:id="@+id/newWalletVerifyButton"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop = "40dp"
+            android:background="@color/welcome_button_yellow"
+            android:fontFamily="@font/gabriela"
+            android:text="@string/generate_seed_phrase"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/newWalletDescription" />
+
+        <TextView
+            android:id="@+id/seedPhrase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
+            android:fontFamily="@font/gabriela"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:ems="10"
-            android:textSize="20sp"
-            android:inputType="textEmailAddress"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mailDescription"/>
-
-        <Button
-            android:id="@+id/mailButton"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="@string/next"
-            android:layout_marginBottom="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp"
-            android:fontFamily="@font/gabriela"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/enteredMail"
-            android:background="@color/welcome_button_yellow"
-            android:textColor="@color/white"/>
-
-        <Button
-            android:id="@+id/resendVerCode"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="@string/resend_ver_code"
-            android:layout_marginBottom="40dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/gabriela"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mailButton"
-            android:background="@color/welcome_button_red"
-            android:textColor="@color/white"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/newWalletVerifyButton" />
 
         <ImageView
-            android:id="@+id/mailImage"
+            android:id="@+id/newWalletImage"
             android:layout_width="240dp"
             android:layout_height="190dp"
-            android:src="@drawable/mail"
+            android:src="@drawable/bitcoins"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp"
             android:gravity="center" />
 
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>

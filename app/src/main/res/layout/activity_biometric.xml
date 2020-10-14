@@ -63,7 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="@color/welcome_button_background"
+            android:background="@color/welcome_button_yellow"
             android:textColor="@color/white"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

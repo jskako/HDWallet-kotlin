@@ -10,16 +10,22 @@ class LoadingSpinner {
 
     companion object{
         val handler = Handler()
+        lateinit var nDialog: ProgressDialog
     }
 
     fun startLoadingSpinner(context: Context, message: String, title: String, exitTimer: Long = 60){
-        val nDialog = ProgressDialog(context)
+        nDialog = ProgressDialog(context)
         nDialog.setMessage(message)
         nDialog.setTitle(title)
         nDialog.isIndeterminate = false
-        nDialog.setCancelable(true)
+        nDialog.setCancelable(false)
         nDialog.show()
         exitTimer(exitTimer)
+    }
+
+    fun stopLoadingSpinner(context: Context){
+        nDialog = ProgressDialog(context)
+        nDialog.hide()
     }
 
     //If stuck on LoadingSpinner for 60 seconds exit app

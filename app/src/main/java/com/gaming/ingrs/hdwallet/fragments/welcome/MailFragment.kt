@@ -2,13 +2,12 @@ package com.gaming.ingrs.hdwallet.fragments.welcome
 
 import PasswordManager
 import android.os.Bundle
+import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.fragment.app.Fragment
 import com.gaming.ingrs.hdwallet.R
 import com.gaming.ingrs.hdwallet.backend.Operations
@@ -26,11 +25,17 @@ class MailFragment : Fragment() {
         lateinit var mailDescription: TextView
         lateinit var enteredMail: EditText
         lateinit var mailButton: Button
-        lateinit var mailButtonVerify: Button
-        lateinit var verifyMail: TextView
+        lateinit var resendVerCode: Button
+        lateinit var progressBar: ProgressBar
+        lateinit var mailImage: ImageView
 
         var MAIL = "hdwalletapp@gmail.com"
         var MAIL_PASSWORD = "_5n{mT(5c@~3Z*\"S"
+
+        var mailButtonCode = 1
+        var message: String = ""
+        var myVerificationCode: String = ""
+        var recMail: String = ""
     }
 
     override fun onCreateView(
@@ -52,32 +57,75 @@ class MailFragment : Fragment() {
         mailDescription = requireActivity().findViewById(R.id.mailDescription)
         enteredMail = requireActivity().findViewById(R.id.enteredMail)
         mailButton = requireActivity().findViewById(R.id.mailButton)
-        mailButtonVerify = requireActivity().findViewById(R.id.mailButtonVerify)
-        verifyMail = requireActivity().findViewById(R.id.verifyMail)
+        resendVerCode = requireActivity().findViewById(R.id.resendVerCode)
+        progressBar = requireActivity().findViewById(R.id.loading_spinner)
+        mailImage = requireActivity().findViewById(R.id.mailImage)
 
-        verifyMail.visibility = View.INVISIBLE
-        mailButtonVerify.visibility = View.INVISIBLE
-        mailButtonVerify.isEnabled = false
+        progressBar.visibility = View.INVISIBLE
+        resendVerCode.visibility = View.INVISIBLE
+        resendVerCode.isEnabled = false
     }
 
     private fun checkMail(){
         mailButton.setOnClickListener {
-            if(Operations().isEmailValid(enteredMail.text.toString())){
-                enteredMail.isEnabled = false
-                verifyMail.visibility = View.VISIBLE
-                mailButtonVerify.visibility = View.VISIBLE
-                mailButtonVerify.isEnabled = true
-                mailButton.visibility = View.INVISIBLE
-                mailButton.isEnabled = false
+            when(mailButtonCode){
+                1-> {
+                    if(Operations().isEmailValid(enteredMail.text.toString())){
+                        progressBar.visibility = View.VISIBLE
+                        recMail = enteredMail.text.toString()
+                        setMailMessage()
+                        sendEmail(message)
+                    }else{
+                        Toast.makeText(context, "Entered mail is invalid", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                2 -> {
+                    setResendButton()
+                    if(myVerificationCode.equals(enteredMail.text.toString())){
+                        progressBar.visibility = View.VISIBLE
+                        hideAllElements()
+                        mailDescription.setTextColor(resources.getColor(R.color.white))
+                        val runnable = Runnable {
+                            activity?.let { it1 -> Operations().writeToSharedPreferences(it1,"userMail", recMail) }
+                            requireFragmentManager().beginTransaction()
+                                .replace(R.id.welcome_container, WalletFragment())
+                                .addToBackStack(null)
+                                .commit()
+                            progressBar.visibility = View.INVISIBLE
+                        }
+                        Handler().postDelayed(runnable, 2000)
 
-                val myVerificationCode = codeGenerator()
-                val message = "Your verification code is: $myVerificationCode"
-
-                sendEmail(message)
-            }else{
-                Toast.makeText(context, "Entered mail is invalid", Toast.LENGTH_SHORT).show()
+                    } else{
+                        mailTitle.text = getString(R.string.mail_title_error)
+                        mailDescription.text = getString(R.string.incorrect_verification_code)
+                        mailDescription.setTextColor(resources.getColor(R.color.red))
+                    }
+                }
             }
         }
+    }
+
+    private fun hideAllElements(){
+        mailTitle.visibility = View.INVISIBLE
+        mailDescription.visibility = View.VISIBLE
+        enteredMail.visibility = View.INVISIBLE
+        mailButton.visibility = View.INVISIBLE
+        resendVerCode.visibility = View.INVISIBLE
+        mailImage.visibility = View.INVISIBLE
+
+        mailDescription.text = getString(R.string.processing_data)
+    }
+
+    private fun setResendButton(){
+        resendVerCode.setOnClickListener {
+            setMailMessage()
+            sendEmail(message)
+        }
+    }
+
+    private fun setMailMessage(){
+        myVerificationCode = codeGenerator()
+        message = "Your verification code is: $myVerificationCode"
     }
 
     private fun sendEmail(message: String) {
@@ -85,10 +133,21 @@ class MailFragment : Fragment() {
             .withTitle(getString(R.string.mail_verification_title))
             .withBody(message)
             .withSender(MAIL)
-            .toEmailAddress(enteredMail.text.toString()) // one or multiple addresses separated by a comma
+            .toEmailAddress(recMail) // one or multiple addresses separated by a comma
             .withListenner(object : GmailListener {
                 override fun sendSuccess() {
-                    Toast.makeText(context, "Success", Toast.LENGTH_SHORT).show()
+                    progressBar.visibility = View.INVISIBLE
+                    mailTitle.text = getString(R.string.confirmation)
+                    resendVerCode.visibility = View.VISIBLE
+                    resendVerCode.isEnabled = true
+                    mailButton.text = getString(R.string.verification_button)
+                    val enteredMailText = enteredMail.text.toString()
+                    mailDescription.text = getString(R.string.verif_mail_desc,  enteredMailText)
+                    enteredMail.setText("")
+
+                    setResendButton()
+                    mailButtonCode = 2
+                    Toast.makeText(context, "Email sent successfully", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun sendFail(err: String) {
@@ -98,9 +157,9 @@ class MailFragment : Fragment() {
             .send()
     }
 
-    private fun codeGenerator(){
-        var myPasswordManager = PasswordManager()
-        var newPassord: String = myPasswordManager.generatePassword(
+    private fun codeGenerator(): String{
+        val myPasswordManager = PasswordManager()
+        return myPasswordManager.generatePassword(
             isWithLetters = true,
             isWithUppercase = true,
             isWithNumbers = true,

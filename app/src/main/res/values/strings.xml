@@ -45,9 +45,22 @@
     <string name="enter_pin_again">Enter Your PIN again</string>
     <string name="auth_failed">Authentication failed</string>
     <string name="mail_description">We need Your mail \nbut we promise that we \nare not going to share it</string>
-    <string name="mail_title">Oh No!</string>
-    <string name="verif_mail_desc">Enter confirmation code \nthat we send to \nYour mail address</string>
-    <string name="verify">Verify</string>
+    <string name="mail_title_error">Oh No!</string>
+    <string name="verif_mail_desc">Enter confirmation code \nthat we send to \n %1$s</string>
+    <string name="resend_ver_code">Send code again</string>
     <string name="mail_verification_title">HDWallet Mail Verification</string>
+    <string name="verification_button">Verify</string>
+    <string name="incorrect_verification_code">Incorrect verification code</string>
+    <string name="mail_title">Sorry to bother you</string>
+    <string name="processing_data">We are processing Your data...</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="wallet_title">Finally some fun</string>
+    <string name="wallet_description">Please pick correct option</string>
+    <string name="new_wallet">New wallet</string>
+    <string name="recover_wallet">Recover wallet</string>
+    <string name="new_wallet_thank_you">Thank you for choosing us</string>
+    <string name="generate_seed_phrase">Generate seed phrase</string>
+    <string name="new_wallet_description">Write down seed phrase and keep it safe! With it anybody can access Your wallet and You can\'t recover it without them.</string>
+    <string name="new_wallet_notice">BE SURE TO WRITE THEM DOWN BEFORE PROCEED</string>
 
 </resources>
