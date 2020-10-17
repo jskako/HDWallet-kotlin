@@ -73,3 +73,9 @@ Mapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/welcome/MailFragment.kt,
 Oapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/welcome/WalletFragment.kt,1\d\1df16ea7998a27364c29832fcc5aa96463717c52
 v
 Fapp/src/main/java/com/gaming/ingrs/hdwallet/backend/PasswordManager.kt,4\8\483f73bf2dce5d54c5acbe758f34783bb2c7e99e
+‰
+Yapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/welcome/NewWalletConfirmFragment.kt,1\6\1636a69bb6ca1663c260f94d721559a8aaac55ad
+‚
+Rapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/welcome/NewWalletFragment.kt,c\a\ca3aa8d184da1ae2bd4d006bf3ec9457120457d7
+…
+Uapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/welcome/EndingWalletFragment.kt,c\f\cfd998765115e20b81c11a7b51ba194a370cdbb5

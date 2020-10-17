@@ -1,5 +1,6 @@
 package com.gaming.ingrs.hdwallet.fragments.welcome
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -32,7 +33,6 @@ class NewWalletFragment : Fragment() {
 
         val SEED_LOC = "tempSeedPhrase"
 
-        var buttonOption = 1
         var seed: List<String> = listOf("")
         var seedString: String = ""
 
@@ -48,6 +48,7 @@ class NewWalletFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        activity?.let { Operations().writeToSharedPreferences(it, "walletButtonOption", "1") }
         init()
         setupButton()
     }
@@ -65,8 +66,8 @@ class NewWalletFragment : Fragment() {
 
     private fun setupButton(){
         newWalletVerifyButton.setOnClickListener {
-            when(buttonOption){
-                1 -> {
+            when(activity?.let { it1 -> Operations().readFromSharedPreferences(it1, "walletButtonOption") }){
+                "1" -> {
                     new_wallet_loading_spinner.visibility = View.VISIBLE
                     newWalletTitle.visibility = View.INVISIBLE
                     newWalletImage.visibility = View.INVISIBLE
@@ -82,20 +83,31 @@ class NewWalletFragment : Fragment() {
                     }
                     Handler().postDelayed(runnable, 2000)
                     newWalletVerifyButton.text = getString(R.string.next)
-                    buttonOption = 2
+                    activity?.let { Operations().writeToSharedPreferences(it, "walletButtonOption", "2") }
                 }
-                2 -> {
-                    val secretKey = Cryptography().generateSecretKey(SEED_LOC)
-                    val encryptedTempPin = Cryptography().encryptMsg(seedString, secretKey)
-                    activity?.let { it1 ->
-                        Operations().saveHashMap(SEED_LOC, encryptedTempPin,
-                            it1
-                        )
-                    }
-                    requireFragmentManager().beginTransaction()
-                        .replace(R.id.welcome_container, NewWalletConfirmFragment())
-                        .addToBackStack(null)
-                        .commit()
+                "2" -> {
+                    val builder = AlertDialog.Builder(context)
+                    builder.setMessage(getString(R.string.wallet_dialog))
+                        .setCancelable(false)
+                        .setPositiveButton(getString(R.string.yes)) { _, _ ->
+                            val secretKey = Cryptography().generateSecretKey(SEED_LOC)
+                            val encryptedTempPin = Cryptography().encryptMsg(seedString, secretKey)
+                            activity?.let { it1 ->
+                                Operations().saveHashMap(SEED_LOC, encryptedTempPin,
+                                    it1
+                                )
+                            }
+                            requireFragmentManager().beginTransaction()
+                                .replace(R.id.welcome_container, NewWalletConfirmFragment())
+                                .addToBackStack(null)
+                                .commit()
+                        }
+                        .setNegativeButton(getString(R.string.no)) { dialog, _ ->
+                            // Dismiss the dialog
+                            dialog.dismiss()
+                        }
+                    val alert = builder.create()
+                    alert.show()
                 }
             }
         }

@@ -62,5 +62,17 @@
     <string name="generate_seed_phrase">Generate seed phrase</string>
     <string name="new_wallet_description">Write down seed phrase and keep it safe! With it anybody can access Your wallet and You can\'t recover it without them.</string>
     <string name="new_wallet_notice">BE SURE TO WRITE THEM DOWN BEFORE PROCEED</string>
+    <string name="confirm_wallet_title">Last but not least</string>
+    <string name="confirm_wallet_description">Rewrite seed phrase that You wrote down in the previous step</string>
+    <string name="create_wallet">Create wallet</string>
+    <string name="generate_new_seed">Generate new seed</string>
+    <string name="incorrect_seed">Incorrect seed phrase entered</string>
+    <string name="creating_wallet">Creating wallet...</string>
+    <string name="pick_correct_option">Pick correct option</string>
+    <string name="checking">Checking...</string>
+    <string name="wallet_dialog">Are you sure you wrote it down? \nYou won\'t be able to recover wallet without it!</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="all_done">A\nl\nl\n \nd\no\nn\ne\n</string>
 
 </resources>

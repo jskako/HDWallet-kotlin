@@ -3,7 +3,6 @@ package com.gaming.ingrs.hdwallet.backend
 import android.app.Activity
 import android.content.Context
 import android.preference.PreferenceManager
-import com.gaming.ingrs.hdwallet.R
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
@@ -12,6 +11,12 @@ import java.util.regex.Pattern
 
 
 class Operations {
+
+    companion object{
+        const val PIN_LOC = "pin"
+        const val SEED_LOC = "seedPhrase"
+        const val MAIL_LOC = "userMail"
+    }
 
     fun convertListToString(
         words: List<String>,
@@ -66,6 +71,21 @@ class Operations {
         val json = prefs.getString(key, "")
         val type: Type = object : TypeToken<HashMap<String?, ByteArray>?>() {}.type
         return gson.fromJson(json, type)
+    }
+
+    fun checkPinExists(activity: Activity): Boolean{
+        val encryptedPin = Operations().getHashMap(PIN_LOC, activity)
+        return encryptedPin != null
+    }
+
+    fun checkMailExists(activity: Activity): Boolean{
+        val profileMail = Operations().readFromSharedPreferences(activity, MAIL_LOC)
+        return profileMail != "0"
+    }
+
+    fun checkWalletExists(activity: Activity): Boolean{
+        val walletCheck = Operations().getHashMap(SEED_LOC, activity)
+        return walletCheck != null
     }
 
 }

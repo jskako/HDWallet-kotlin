@@ -142,7 +142,7 @@ class MailFragment : Fragment() {
                     resendVerCode.isEnabled = true
                     mailButton.text = getString(R.string.verification_button)
                     val enteredMailText = enteredMail.text.toString()
-                    mailDescription.text = getString(R.string.verif_mail_desc,  enteredMailText)
+                    mailDescription.text = getString(R.string.verif_mail_desc,  recMail)
                     enteredMail.setText("")
 
                     setResendButton()

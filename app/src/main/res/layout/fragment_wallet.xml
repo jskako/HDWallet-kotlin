@@ -7,20 +7,36 @@
     android:background="@color/welcome_background"
     tools:context=".fragments.welcome.MailFragment">
 
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="2">
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/walletTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:fontFamily="@font/gabriela"
+            android:text="@string/pick_correct_option"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/newWalletButton"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="100dp"
             android:layout_weight="1"
             android:text="@string/new_wallet"
             android:textSize="25sp"
             android:fontFamily="@font/gabriela"
+            android:layout_marginTop="70dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/walletTitle"
@@ -30,10 +46,13 @@
         <Button
             android:id="@+id/recoverWalletButton"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="100dp"
             android:layout_weight="1"
             android:text="@string/recover_wallet"
             android:textSize="25sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             android:fontFamily="@font/gabriela"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -41,5 +60,16 @@
             android:background="@color/welcome_button_red"
             android:textColor="@color/white"/>
 
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/biometricWarningImage"
+            android:layout_width="240dp"
+            android:layout_height="190dp"
+            android:src="@drawable/options"
+            app:layout_constraintTop_toBottomOf="@+id/recoverWalletButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="50dp"
+            android:gravity="center" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

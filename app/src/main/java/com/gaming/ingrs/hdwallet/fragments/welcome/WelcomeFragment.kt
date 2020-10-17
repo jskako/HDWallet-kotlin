@@ -3,6 +3,7 @@ package com.gaming.ingrs.hdwallet.fragments.welcome
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -67,8 +68,22 @@ class WelcomeFragment : Fragment() {
     }
 
     private fun checkSteps():Int{
-        //We will check PIN, wallet, and mail
         // 1 - PIN Needed, 2 - Mail Needed, 3 - Wallet Needed
+        var checker: Boolean = Operations().checkPinExists(requireActivity())
+        if(!checker){
+            return 1
+        }
+
+        checker = Operations().checkMailExists(requireActivity())
+        if(!checker){
+            return 2
+        }
+
+        checker = Operations().checkWalletExists(requireActivity())
+        if(!checker){
+            return 3
+        }
+
         return 1
     }
 

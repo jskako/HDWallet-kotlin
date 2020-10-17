@@ -17,7 +17,6 @@ import com.google.android.gms.safetynet.SafetyNetClient
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
-import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.security.SecureRandom
@@ -36,6 +35,10 @@ class SafetyNetAttestation : AppCompatActivity() {
         private val mRandom = SecureRandom()
         private var mResult: String? = null
         private const val API_KEY = "AIzaSyDSHoihxEGmqBxHsrb9WsmoRoh3w2xptbE"
+
+        const val PIN_LOC = "pin"
+        const val SEED_LOC = "seedPhrase"
+        const val MAIL_LOC = "userMail"
 
         var thread: Thread = object : Thread() {
             override fun run() {
@@ -111,7 +114,7 @@ class SafetyNetAttestation : AppCompatActivity() {
 
     private fun successNext() {
         loadingSpinner.stopTimer()
-        when(checkIfWalletExist()){
+        when(conditionCheck()){
             false -> {
                 val intent = Intent(context, WelcomeActivity::class.java)
                 context.startActivity(intent)
@@ -123,25 +126,17 @@ class SafetyNetAttestation : AppCompatActivity() {
         }
     }
 
-    private fun checkIfWalletExist(): Boolean{
-        //TODO: Check profile, wallet
-        var check = false
-        val operations = Operations()
+    private fun conditionCheck(): Boolean{
 
-        //Check PIN
-        check = Cryptography().pinExists(activity)
-        val profileMail = operations.readFromSharedPreferences(activity, "userMail")
-        check = !profileMail.equals("0")
+        var checker: Boolean = Operations().checkPinExists(activity)
+        Log.e(TAG, "PIN = $checker")
 
-        //Wallet check
-        val tempSeedPhrase = operations.readFromSharedPreferences(activity, "tempSeedPhrase")
-        val seedPhrase = operations.readFromSharedPreferences(activity, "seedPhrase")
+        checker = Operations().checkMailExists(activity)
+        Log.e(TAG, "Mail = $checker")
 
-        Log.e("123123tempSeedPhrase", "$tempSeedPhrase")
-        Log.e("123123seedPhrase", "$seedPhrase")
-        Log.e("123123userMail", "$profileMail")
+        checker = Operations().checkWalletExists(activity)
+        Log.e(TAG, "Seed = $checker")
 
-        return check
-        //Check profil
+        return checker
     }
 }
