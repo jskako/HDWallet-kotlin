@@ -52,7 +52,7 @@
     <string name="verification_button">Verify</string>
     <string name="incorrect_verification_code">Incorrect verification code</string>
     <string name="mail_title">Sorry to bother you</string>
-    <string name="processing_data">We are processing Your data...</string>
+    <string name="processing_data">We are processing Your data…</string>
     <string name="confirmation">Confirmation</string>
     <string name="wallet_title">Finally some fun</string>
     <string name="wallet_description">Please pick correct option</string>
@@ -67,12 +67,13 @@
     <string name="create_wallet">Create wallet</string>
     <string name="generate_new_seed">Generate new seed</string>
     <string name="incorrect_seed">Incorrect seed phrase entered</string>
-    <string name="creating_wallet">Creating wallet...</string>
+    <string name="creating_wallet">Creating wallet…</string>
     <string name="pick_correct_option">Pick correct option</string>
-    <string name="checking">Checking...</string>
-    <string name="wallet_dialog">Are you sure you wrote it down? \nYou won\'t be able to recover wallet without it!</string>
+    <string name="checking">Checking…</string>
+    <string name="wallet_dialog">Are you sure that you wrote seed phrase down? \nYou won\'t be able to recover wallet without it!</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="all_done">A\nl\nl\n \nd\no\nn\ne\n</string>
+    <string name="warning">Warning</string>
 
 </resources>

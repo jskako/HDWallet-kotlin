@@ -7,16 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.*
-import androidx.core.content.ContextCompat
-import com.gaming.ingrs.hdwallet.PinActivity
-
 import com.gaming.ingrs.hdwallet.R
 import com.gaming.ingrs.hdwallet.backend.BitcoinAPI
 import com.gaming.ingrs.hdwallet.backend.Cryptography
 import com.gaming.ingrs.hdwallet.backend.Operations
 import com.gaming.ingrs.hdwallet.backend.hideKeyboard
+import kotlinx.android.synthetic.main.warning_dialog.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -88,28 +85,33 @@ class NewWalletFragment : Fragment() {
                     activity?.let { Operations().writeToSharedPreferences(it, "walletButtonOption", "2") }
                 }
                 "2" -> {
-                    val builder = AlertDialog.Builder(context)
-                    builder.setMessage(getString(R.string.wallet_dialog))
-                        .setCancelable(false)
-                        .setPositiveButton(getString(R.string.yes)) { _, _ ->
-                            val secretKey = Cryptography().generateSecretKey(SEED_LOC)
-                            val encryptedTempPin = Cryptography().encryptMsg(seedString, secretKey)
-                            activity?.let { it1 ->
-                                Operations().saveHashMap(SEED_LOC, encryptedTempPin,
-                                    it1
-                                )
-                            }
-                            requireFragmentManager().beginTransaction()
-                                .replace(R.id.welcome_container, NewWalletConfirmFragment())
-                                .addToBackStack(null)
-                                .commit()
+                    //Inflate the dialog with custom view
+                    val mDialogView = LayoutInflater.from(context).inflate(R.layout.warning_dialog, null)
+                    //AlertDialogBuilder
+                    val mBuilder = AlertDialog.Builder(context)
+                        .setView(mDialogView)
+                    //show dialog
+                    val  mAlertDialog = mBuilder.show()
+                    //login button click of custom layout
+                    mDialogView.dialogConfirmBtn.setOnClickListener {
+                        val secretKey = Cryptography().generateSecretKey(SEED_LOC)
+                        val encryptedTempPin = Cryptography().encryptMsg(seedString, secretKey)
+                        activity?.let { it1 ->
+                            Operations().saveHashMap(SEED_LOC, encryptedTempPin,
+                                it1
+                            )
                         }
-                        .setNegativeButton(getString(R.string.no)) { dialog, _ ->
-                            // Dismiss the dialog
-                            dialog.dismiss()
-                        }
-                    val alert = builder.create()
-                    alert.show()
+                        requireFragmentManager().beginTransaction()
+                            .replace(R.id.welcome_container, NewWalletConfirmFragment())
+                            .addToBackStack(null)
+                            .commit()
+                        mAlertDialog.dismiss()
+                    }
+                    //cancel button click of custom layout
+                    mDialogView.dialogCancelBtn.setOnClickListener {
+                        //dismiss dialog
+                        mAlertDialog.dismiss()
+                    }
                 }
             }
         }
