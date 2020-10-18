@@ -79,3 +79,5 @@ Yapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/welcome/NewWalletConfirmF
 Rapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/welcome/NewWalletFragment.kt,c\a\ca3aa8d184da1ae2bd4d006bf3ec9457120457d7
 …
 Uapp/src/main/java/com/gaming/ingrs/hdwallet/fragments/welcome/EndingWalletFragment.kt,c\f\cfd998765115e20b81c11a7b51ba194a370cdbb5
+q
+Aapp/src/main/java/com/gaming/ingrs/hdwallet/backend/Extensions.kt,b\b\bb8dd331345784796bcea17ac833e60354e1a7ef

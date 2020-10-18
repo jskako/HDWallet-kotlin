@@ -8,10 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.widget.*
 import com.gaming.ingrs.hdwallet.MainActivity
 
 import com.gaming.ingrs.hdwallet.R
@@ -28,18 +25,18 @@ class NewWalletConfirmFragment : Fragment() {
         val TEMP_SEED_LOC = "tempSeedPhrase"
         val SEED_LOC = "seedPhrase"
 
-        lateinit var word1: EditText
-        lateinit var word2: EditText
-        lateinit var word3: EditText
-        lateinit var word4: EditText
-        lateinit var word5: EditText
-        lateinit var word6: EditText
-        lateinit var word7: EditText
-        lateinit var word8: EditText
-        lateinit var word9: EditText
-        lateinit var word10: EditText
-        lateinit var word11: EditText
-        lateinit var word12: EditText
+        lateinit var word1: AutoCompleteTextView
+        lateinit var word2: AutoCompleteTextView
+        lateinit var word3: AutoCompleteTextView
+        lateinit var word4: AutoCompleteTextView
+        lateinit var word5: AutoCompleteTextView
+        lateinit var word6: AutoCompleteTextView
+        lateinit var word7: AutoCompleteTextView
+        lateinit var word8: AutoCompleteTextView
+        lateinit var word9: AutoCompleteTextView
+        lateinit var word10: AutoCompleteTextView
+        lateinit var word11: AutoCompleteTextView
+        lateinit var word12: AutoCompleteTextView
 
         lateinit var confirm_wallet_loading_spinner: ProgressBar
         lateinit var confirmWalletVerifyButton: Button
@@ -61,7 +58,34 @@ class NewWalletConfirmFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         init()
+        getTempSeed()
+        setAutoComplete()
         setupButton()
+    }
+
+    private fun setAutoComplete(){
+        val autoCompleteList = Operations().convertStringToList(decryptTempSeed, " ")
+        val adapter =
+            context?.let { ArrayAdapter(it, android.R.layout.simple_list_item_1, autoCompleteList) }
+        word1.setAdapter(adapter)
+        word2.setAdapter(adapter)
+        word3.setAdapter(adapter)
+        word4.setAdapter(adapter)
+        word5.setAdapter(adapter)
+        word6.setAdapter(adapter)
+        word7.setAdapter(adapter)
+        word8.setAdapter(adapter)
+        word9.setAdapter(adapter)
+        word10.setAdapter(adapter)
+        word11.setAdapter(adapter)
+        word12.setAdapter(adapter)
+    }
+
+    private fun getTempSeed(){
+        val encryptedTempSeed =
+            activity?.let { it1 -> Operations().getHashMap(TEMP_SEED_LOC, it1) }
+        val secretTempSeedKey = Cryptography().getSecretKey(TEMP_SEED_LOC)
+        decryptTempSeed = Cryptography().decryptMsg(encryptedTempSeed, secretTempSeedKey)?.decodeToString()!!
     }
 
     private fun init(){
@@ -186,10 +210,6 @@ class NewWalletConfirmFragment : Fragment() {
             confirmWalletDescription.text = getString(R.string.checking)
             val seed = "${word1.text} ${word2.text} ${word3.text} ${word4.text} ${word5.text} ${word6.text} ${word7.text} ${word8.text} ${word9.text} ${word10.text} ${word11.text} ${word12.text}"
             Log.e("", seed)
-            val encryptedTempSeed =
-                activity?.let { it1 -> Operations().getHashMap(TEMP_SEED_LOC, it1) }
-            val secretTempSeedKey = Cryptography().getSecretKey(TEMP_SEED_LOC)
-            decryptTempSeed = Cryptography().decryptMsg(encryptedTempSeed, secretTempSeedKey)?.decodeToString()!!
             colorIncorrectSeed()
 
             if (seed.trim() == decryptTempSeed.trim()){

@@ -64,47 +64,47 @@
             app:layout_constraintTop_toBottomOf="@+id/confirmWalletDescription"
             android:orientation="horizontal">
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/word1"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="center" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/word2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="center" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/word3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="center" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/word4"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="center" />
         </LinearLayout>
@@ -119,47 +119,47 @@
             app:layout_constraintTop_toBottomOf="@+id/firstFour"
             android:orientation="horizontal">
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/word5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="center" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/word6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="center" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/word7"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="center" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/word8"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="center" />
         </LinearLayout>
@@ -174,47 +174,47 @@
             app:layout_constraintTop_toBottomOf="@+id/secondFour"
             android:orientation="horizontal">
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/word9"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="center" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/word10"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="center" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/word11"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="center" />
 
-            <EditText
+            <AutoCompleteTextView
                 android:id="@+id/word12"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="13dp"
                 android:layout_weight="1"
                 android:imeOptions="actionDone"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:maxLines="1"
                 android:textAlignment="center" />
         </LinearLayout>

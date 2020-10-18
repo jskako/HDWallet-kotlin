@@ -3,6 +3,7 @@ package com.gaming.ingrs.hdwallet.backend
 import android.app.Activity
 import android.content.Context
 import android.preference.PreferenceManager
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.lang.reflect.Type
@@ -23,11 +24,21 @@ class Operations {
         delimiter: String
     ): String {
         val builder = StringBuilder()
+        var iterator = 1
         for (details in words) {
             builder.append(details)
-            builder.append(delimiter)
+            if(iterator < words.size){
+                builder.append(delimiter)
+            }
+            iterator += 1
         }
         return builder.toString()
+    }
+
+    fun convertStringToList(data: String, delimiter: String): List<String>{
+        return data.trim().splitToSequence(delimiter)
+            .filter { it.isNotEmpty() }
+            .toMutableList()
     }
 
     fun writeToSharedPreferences(activity: Activity, key: String, data: String) {
