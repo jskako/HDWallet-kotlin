@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.gaming.ingrs.hdwallet.backend.Cryptography
 import com.gaming.ingrs.hdwallet.backend.Operations
+import com.gaming.ingrs.hdwallet.backend.hideKeyboard
 
 class PinActivity() : AppCompatActivity() {
 
@@ -117,6 +118,7 @@ class PinActivity() : AppCompatActivity() {
                                 "1" -> setResult(Activity.RESULT_OK)
                                 "2" -> setResult(Activity.RESULT_FIRST_USER)
                             }
+                            hideKeyboard()
                             finish()
                         }
                     }

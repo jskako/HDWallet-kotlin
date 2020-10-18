@@ -11,6 +11,7 @@ import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.gaming.ingrs.hdwallet.R
+import com.gaming.ingrs.hdwallet.backend.hideKeyboard
 
 /**
  * A simple [Fragment] subclass.
@@ -38,6 +39,7 @@ class WalletFragment : Fragment() {
 
     private fun setButtons(){
         newWalletButton.setOnClickListener {
+            hideKeyboard()
             requireFragmentManager().beginTransaction()
                 .replace(R.id.welcome_container, NewWalletFragment())
                 .addToBackStack(null)
@@ -45,6 +47,7 @@ class WalletFragment : Fragment() {
         }
 
         recoverWalletButton.setOnClickListener {
+            hideKeyboard()
             Toast.makeText(
                 context,
                 "Not implemented yet!",

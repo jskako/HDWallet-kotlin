@@ -16,6 +16,7 @@ import com.gaming.ingrs.hdwallet.R
 import com.gaming.ingrs.hdwallet.backend.BitcoinAPI
 import com.gaming.ingrs.hdwallet.backend.Cryptography
 import com.gaming.ingrs.hdwallet.backend.Operations
+import com.gaming.ingrs.hdwallet.backend.hideKeyboard
 
 /**
  * A simple [Fragment] subclass.
@@ -66,6 +67,7 @@ class NewWalletFragment : Fragment() {
 
     private fun setupButton(){
         newWalletVerifyButton.setOnClickListener {
+            hideKeyboard()
             when(activity?.let { it1 -> Operations().readFromSharedPreferences(it1, "walletButtonOption") }){
                 "1" -> {
                     new_wallet_loading_spinner.visibility = View.VISIBLE

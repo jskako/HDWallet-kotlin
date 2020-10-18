@@ -17,6 +17,7 @@ import com.gaming.ingrs.hdwallet.MainActivity
 import com.gaming.ingrs.hdwallet.R
 import com.gaming.ingrs.hdwallet.backend.Cryptography
 import com.gaming.ingrs.hdwallet.backend.Operations
+import com.gaming.ingrs.hdwallet.backend.hideKeyboard
 
 /**
  * A simple [Fragment] subclass.
@@ -181,7 +182,7 @@ class NewWalletConfirmFragment : Fragment() {
 
     private fun setupButton(){
         confirmWalletVerifyButton.setOnClickListener {
-
+            hideKeyboard()
             confirmWalletDescription.text = getString(R.string.checking)
             val seed = "${word1.text} ${word2.text} ${word3.text} ${word4.text} ${word5.text} ${word6.text} ${word7.text} ${word8.text} ${word9.text} ${word10.text} ${word11.text} ${word12.text}"
             Log.e("", seed)
@@ -220,6 +221,7 @@ class NewWalletConfirmFragment : Fragment() {
         }
 
         confirmWalletNewCode.setOnClickListener {
+            hideKeyboard()
             activity?.let { Operations().writeToSharedPreferences(it, "walletButtonOption", "1") }
             requireFragmentManager().popBackStack()
         }

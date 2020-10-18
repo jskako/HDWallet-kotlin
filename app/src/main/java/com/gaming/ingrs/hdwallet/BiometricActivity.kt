@@ -14,6 +14,7 @@ import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import com.gaming.ingrs.hdwallet.backend.Cryptography
+import com.gaming.ingrs.hdwallet.backend.hideKeyboard
 import java.util.concurrent.Executor
 
 class BiometricActivity : AppCompatActivity() {
@@ -92,6 +93,7 @@ class BiometricActivity : AppCompatActivity() {
                     result: BiometricPrompt.AuthenticationResult
                 ) {
                     super.onAuthenticationSucceeded(result)
+                    hideKeyboard()
                     val intent = Intent(context, MainActivity::class.java)
                     context.startActivity(intent)
                 }
@@ -99,6 +101,7 @@ class BiometricActivity : AppCompatActivity() {
                     errorCode: Int, errString: CharSequence
                 ) {
                     super.onAuthenticationError(errorCode, errString)
+                    hideKeyboard()
                     when(errorCode) {
                         BiometricConstants.ERROR_USER_CANCELED -> {
                             onError(getString(R.string.biometric_user_canceled), getString(R.string.biometric_canceled_description))
@@ -143,6 +146,7 @@ class BiometricActivity : AppCompatActivity() {
                 }
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
+                    hideKeyboard()
                     //Failed auth
                     onError(getString(R.string.auth_failed), getString(R.string.pin_identification_description))
                 }

@@ -14,6 +14,7 @@ import com.gaming.ingrs.hdwallet.PinActivity
 import com.gaming.ingrs.hdwallet.R
 import com.gaming.ingrs.hdwallet.backend.Cryptography
 import com.gaming.ingrs.hdwallet.backend.Operations
+import com.gaming.ingrs.hdwallet.backend.hideKeyboard
 
 /**
  * A simple [Fragment] subclass.
@@ -41,6 +42,7 @@ class WelcomeFragment : Fragment() {
         when(checkSteps()){
             1 -> {
                 next.setOnClickListener {
+                    hideKeyboard()
                     val intent = Intent(context, PinActivity::class.java)
                     intent.putExtra("description", getString(R.string.pin_identification_description))
                     intent.putExtra("keySecret", "pin")
@@ -50,6 +52,7 @@ class WelcomeFragment : Fragment() {
             }
             2 -> {
                 next.setOnClickListener {
+                    hideKeyboard()
                     requireFragmentManager().beginTransaction()
                         .replace(R.id.welcome_container, MailFragment())
                         .addToBackStack(null)
@@ -58,6 +61,7 @@ class WelcomeFragment : Fragment() {
             }
             3 -> {
                 next.setOnClickListener {
+                    hideKeyboard()
                     requireFragmentManager().beginTransaction()
                         .replace(R.id.welcome_container, WalletFragment())
                         .addToBackStack(null)

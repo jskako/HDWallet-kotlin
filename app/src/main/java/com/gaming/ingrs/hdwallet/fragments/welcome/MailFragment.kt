@@ -11,6 +11,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import com.gaming.ingrs.hdwallet.R
 import com.gaming.ingrs.hdwallet.backend.Operations
+import com.gaming.ingrs.hdwallet.backend.hideKeyboard
 import com.github.tntkhang.gmailsenderlibrary.GMailSender
 import com.github.tntkhang.gmailsenderlibrary.GmailListener
 
@@ -71,6 +72,7 @@ class MailFragment : Fragment() {
             when(mailButtonCode){
                 1-> {
                     if(Operations().isEmailValid(enteredMail.text.toString())){
+                        hideKeyboard()
                         progressBar.visibility = View.VISIBLE
                         recMail = enteredMail.text.toString()
                         setMailMessage()
@@ -82,6 +84,7 @@ class MailFragment : Fragment() {
                 2 -> {
                     setResendButton()
                     if(myVerificationCode.equals(enteredMail.text.toString())){
+                        hideKeyboard()
                         progressBar.visibility = View.VISIBLE
                         hideAllElements()
                         mailDescription.setTextColor(resources.getColor(R.color.white))
@@ -118,6 +121,7 @@ class MailFragment : Fragment() {
 
     private fun setResendButton(){
         resendVerCode.setOnClickListener {
+            hideKeyboard()
             setMailMessage()
             sendEmail(message)
         }
