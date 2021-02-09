@@ -21,18 +21,17 @@ import com.github.tntkhang.gmailsenderlibrary.GmailListener
  */
 class MailFragment : Fragment() {
 
-    companion object{
-        lateinit var mailTitle: TextView
-        lateinit var mailDescription: TextView
-        lateinit var enteredMail: EditText
-        lateinit var mailButton: Button
-        lateinit var resendVerCode: Button
-        lateinit var progressBar: ProgressBar
-        lateinit var mailImage: ImageView
+    lateinit var mailTitle: TextView
+    lateinit var mailDescription: TextView
+    lateinit var enteredMail: EditText
+    lateinit var mailButton: Button
+    lateinit var resendVerCode: Button
+    lateinit var progressBar: ProgressBar
+    lateinit var mailImage: ImageView
 
+    companion object{
         var MAIL = "hdwalletapp@gmail.com"
         var MAIL_PASSWORD = "_5n{mT(5c@~3Z*\"S"
-
         var mailButtonCode = 1
         var message: String = ""
         var myVerificationCode: String = ""
@@ -156,6 +155,7 @@ class MailFragment : Fragment() {
 
                 override fun sendFail(err: String) {
                     Toast.makeText(context, "Fail: $err", Toast.LENGTH_SHORT).show()
+                    progressBar.visibility = View.INVISIBLE
                 }
             })
             .send()

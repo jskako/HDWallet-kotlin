@@ -21,10 +21,11 @@ import com.gaming.ingrs.hdwallet.backend.hideKeyboard
  */
 class WelcomeFragment : Fragment() {
 
+    lateinit var next: Button
+    lateinit var description: TextView
+
     companion object{
-        val PIN_RETURNED = 1
-        lateinit var next: Button
-        lateinit var description: TextView
+        const val PIN_RETURNED = 1
     }
 
     override fun onCreateView(

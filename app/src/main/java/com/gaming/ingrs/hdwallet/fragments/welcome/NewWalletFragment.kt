@@ -21,20 +21,17 @@ import kotlinx.android.synthetic.main.warning_dialog.view.*
  */
 class NewWalletFragment : Fragment() {
 
+    lateinit var new_wallet_loading_spinner: ProgressBar
+    lateinit var newWalletTitle: TextView
+    lateinit var newWalletDescription: TextView
+    lateinit var newWalletVerifyButton: Button
+    lateinit var seedPhrase: TextView
+    lateinit var newWalletImage: ImageView
+
     companion object{
-
-        lateinit var new_wallet_loading_spinner: ProgressBar
-        lateinit var newWalletTitle: TextView
-        lateinit var newWalletDescription: TextView
-        lateinit var newWalletVerifyButton: Button
-        lateinit var seedPhrase: TextView
-        lateinit var newWalletImage: ImageView
-
-        val SEED_LOC = "tempSeedPhrase"
-
+        const val SEED_LOC = "tempSeedPhrase"
         var seed: List<String> = listOf("")
         var seedString: String = ""
-
     }
 
     override fun onCreateView(
@@ -110,7 +107,6 @@ class NewWalletFragment : Fragment() {
                     }
                     //cancel button click of custom layout
                     mDialogView.dialogCancelBtn.setOnClickListener {
-                        //dismiss dialog
                         mAlertDialog.dismiss()
                     }
                 }

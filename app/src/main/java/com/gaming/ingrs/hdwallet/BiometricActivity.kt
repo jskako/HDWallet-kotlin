@@ -19,13 +19,13 @@ import java.util.concurrent.Executor
 
 class BiometricActivity : AppCompatActivity() {
 
-    companion object{
-        lateinit var biometricTitle: TextView
-        lateinit var biometricDescription: TextView
-        lateinit var biometricWarningImage: ImageView
-        lateinit var biometricButton: Button
+    lateinit var biometricTitle: TextView
+    lateinit var biometricDescription: TextView
+    lateinit var biometricWarningImage: ImageView
+    lateinit var biometricButton: Button
 
-        val PIN_RETURNED = 1
+    companion object{
+        const val PIN_RETURNED = 1
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

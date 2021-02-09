@@ -24,10 +24,8 @@ class PayFragment : Fragment() {
 
     private lateinit var layout: FrameLayout
 
-    companion object{
-        lateinit var button : Button
-        lateinit var text : TextView
-    }
+    lateinit var button : Button
+    lateinit var text : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

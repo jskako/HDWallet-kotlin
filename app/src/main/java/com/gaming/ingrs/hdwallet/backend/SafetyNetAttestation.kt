@@ -34,11 +34,7 @@ class SafetyNetAttestation : AppCompatActivity() {
         private const val TAG = "SafetyNetSample"
         private val mRandom = SecureRandom()
         private var mResult: String? = null
-        private const val API_KEY = "AIzaSyDSHoihxEGmqBxHsrb9WsmoRoh3w2xptbE"
-
-        const val PIN_LOC = "pin"
-        const val SEED_LOC = "seedPhrase"
-        const val MAIL_LOC = "userMail"
+        private const val API_KEY = "AIzaSyBkXoJHzYDJZxoH1xD1_32rI63pwh-TgYY"
 
         var thread: Thread = object : Thread() {
             override fun run() {
@@ -63,7 +59,7 @@ class SafetyNetAttestation : AppCompatActivity() {
         )
         val nonceData = "Safety Net Sample: " + System.currentTimeMillis()
         val nonce: ByteArray = getRequestNonce(nonceData)
-        //activity needs to be fixed
+
         val client: SafetyNetClient = SafetyNet.getClient(activity)
         val task: Task<AttestationResponse> = client.attest(nonce, API_KEY)
         task.addOnSuccessListener(activity, mSuccessListener)

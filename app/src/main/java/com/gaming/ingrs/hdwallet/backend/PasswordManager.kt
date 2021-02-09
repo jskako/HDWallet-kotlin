@@ -1,12 +1,11 @@
 import java.security.SecureRandom
-import java.util.logging.Logger
 
 class PasswordManager {
 
-    val letters : String = "abcdefghijklmnopqrstuvwxyz"
-    val uppercaseLetters : String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    val numbers : String = "0123456789"
-    val special : String = "@#=+!£$%&?"
+    private val letters : String = "abcdefghijklmnopqrstuvwxyz"
+    private val uppercaseLetters : String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    private val numbers : String = "0123456789"
+    private val special : String = "@#=+!£$%&?"
 
     fun generatePassword(isWithLetters: Boolean,
                          isWithUppercase: Boolean,

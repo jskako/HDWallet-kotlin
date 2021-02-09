@@ -21,29 +21,28 @@ import com.gaming.ingrs.hdwallet.backend.hideKeyboard
  */
 class NewWalletConfirmFragment : Fragment() {
 
+    lateinit var word1: AutoCompleteTextView
+    lateinit var word2: AutoCompleteTextView
+    lateinit var word3: AutoCompleteTextView
+    lateinit var word4: AutoCompleteTextView
+    lateinit var word5: AutoCompleteTextView
+    lateinit var word6: AutoCompleteTextView
+    lateinit var word7: AutoCompleteTextView
+    lateinit var word8: AutoCompleteTextView
+    lateinit var word9: AutoCompleteTextView
+    lateinit var word10: AutoCompleteTextView
+    lateinit var word11: AutoCompleteTextView
+    lateinit var word12: AutoCompleteTextView
+
+    private lateinit var confirm_wallet_loading_spinner: ProgressBar
+    lateinit var confirmWalletVerifyButton: Button
+    lateinit var confirmWalletNewCode: Button
+    lateinit var confirmWalletTitle: TextView
+    lateinit var confirmWalletDescription: TextView
+
     companion object{
-        val TEMP_SEED_LOC = "tempSeedPhrase"
-        val SEED_LOC = "seedPhrase"
-
-        lateinit var word1: AutoCompleteTextView
-        lateinit var word2: AutoCompleteTextView
-        lateinit var word3: AutoCompleteTextView
-        lateinit var word4: AutoCompleteTextView
-        lateinit var word5: AutoCompleteTextView
-        lateinit var word6: AutoCompleteTextView
-        lateinit var word7: AutoCompleteTextView
-        lateinit var word8: AutoCompleteTextView
-        lateinit var word9: AutoCompleteTextView
-        lateinit var word10: AutoCompleteTextView
-        lateinit var word11: AutoCompleteTextView
-        lateinit var word12: AutoCompleteTextView
-
-        lateinit var confirm_wallet_loading_spinner: ProgressBar
-        lateinit var confirmWalletVerifyButton: Button
-        lateinit var confirmWalletNewCode: Button
-        lateinit var confirmWalletTitle: TextView
-        lateinit var confirmWalletDescription: TextView
-
+        const val TEMP_SEED_LOC = "tempSeedPhrase"
+        const val SEED_LOC = "seedPhrase"
         var decryptTempSeed: String = ""
     }
 

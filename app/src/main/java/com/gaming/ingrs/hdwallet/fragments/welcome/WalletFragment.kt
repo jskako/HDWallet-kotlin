@@ -5,9 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import android.widget.Button
-import android.widget.ProgressBar
 import android.widget.Toast
 
 import com.gaming.ingrs.hdwallet.R
@@ -18,10 +16,8 @@ import com.gaming.ingrs.hdwallet.backend.hideKeyboard
  */
 class WalletFragment : Fragment() {
 
-    companion object{
-        lateinit var newWalletButton: Button
-        lateinit var recoverWalletButton: Button
-    }
+    lateinit var newWalletButton: Button
+    lateinit var recoverWalletButton: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

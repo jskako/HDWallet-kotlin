@@ -17,12 +17,11 @@ import com.gaming.ingrs.hdwallet.backend.hideKeyboard
 class PinActivity() : AppCompatActivity() {
 
     private val editTextArray: ArrayList<EditText> = ArrayList(NUM_OF_DIGITS)
+    lateinit var description: TextView
 
     companion object {
-
         const val NUM_OF_DIGITS = 4
         var numTemp = ""
-        lateinit var description: TextView
         lateinit var secretKeyLocation: String
         lateinit var returnActivityResult: String
     }
